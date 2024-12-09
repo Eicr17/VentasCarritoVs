@@ -27,8 +27,8 @@ namespace VentasCarrito.Controllers
                         lstProducto.Add(
                             new ProductoApi
                             {
-                                Id_Producto = prod.Id_Producto,
-                                Nombre_Producto  =  prod.Nombre_Producto,
+                                id_producto = prod.Id_Producto,
+                                nombre_producto  =  prod.Nombre_Producto,
                                 Existencia = prod.Existencia,
                                 Marca = prod.Marca,
                                 Precio = prod.Precio
@@ -62,8 +62,8 @@ namespace VentasCarrito.Controllers
 
             try
             {
-                InsercionProducto.Id_Producto = Item.Id_Producto;
-                InsercionProducto.Nombre_Producto = Item.Nombre_Producto;
+                InsercionProducto.Id_Producto = Item.id_producto;
+                InsercionProducto.Nombre_Producto = Item.nombre_producto;
                 InsercionProducto.Existencia = Item.Existencia;
                 InsercionProducto.Marca = Item.Marca;
                 InsercionProducto.Precio = Item.Precio;
@@ -91,8 +91,8 @@ namespace VentasCarrito.Controllers
 
             try
             {
-                ActualizacionProducto.Id_Producto = Item.Id_Producto;
-                ActualizacionProducto.Nombre_Producto = Item.Nombre_Producto;
+                ActualizacionProducto.Id_Producto = Item.id_producto;
+                ActualizacionProducto.Nombre_Producto = Item.nombre_producto;
                 ActualizacionProducto.Existencia = Item.Existencia;
                 ActualizacionProducto.Marca = Item.Marca;
                 ActualizacionProducto.Precio = Item.Precio;
@@ -118,7 +118,7 @@ namespace VentasCarrito.Controllers
 
             try
             {
-                EliminacionProducto.Id_Producto = Item.Id_Producto;
+                EliminacionProducto.Id_Producto = Item.id_producto;
                 ProductoEliminacion.Eliminar(EliminacionProducto);
                 var resp = new MdlMensajeResp();
                 resp.Mensaje = "Eliminacion Exitosa";
