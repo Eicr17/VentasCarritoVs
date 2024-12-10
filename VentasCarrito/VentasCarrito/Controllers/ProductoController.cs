@@ -29,9 +29,9 @@ namespace VentasCarrito.Controllers
                             {
                                 id_producto = prod.Id_Producto,
                                 nombre_producto  =  prod.Nombre_Producto,
-                                Existencia = prod.Existencia,
-                                Marca = prod.Marca,
-                                Precio = prod.Precio
+                                existencia = prod.Existencia,
+                                marca = prod.Marca,
+                                precio = prod.Precio
 
 
                           });
@@ -64,9 +64,9 @@ namespace VentasCarrito.Controllers
             {
                 InsercionProducto.Id_Producto = Item.id_producto;
                 InsercionProducto.Nombre_Producto = Item.nombre_producto;
-                InsercionProducto.Existencia = Item.Existencia;
-                InsercionProducto.Marca = Item.Marca;
-                InsercionProducto.Precio = Item.Precio;
+                InsercionProducto.Existencia = Item.existencia;
+                InsercionProducto.Marca = Item.marca;
+                InsercionProducto.Precio = Item.precio;
                 ProductoInsercion.Insertar(InsercionProducto);
                 var resp = new MdlMensajeResp();
                 resp.Mensaje = "Insercion Exitosa";
@@ -93,9 +93,9 @@ namespace VentasCarrito.Controllers
             {
                 ActualizacionProducto.Id_Producto = Item.id_producto;
                 ActualizacionProducto.Nombre_Producto = Item.nombre_producto;
-                ActualizacionProducto.Existencia = Item.Existencia;
-                ActualizacionProducto.Marca = Item.Marca;
-                ActualizacionProducto.Precio = Item.Precio;
+                ActualizacionProducto.Existencia = Item.existencia;
+                ActualizacionProducto.Marca = Item.marca;
+                ActualizacionProducto.Precio = Item.precio;
                 ProductoActualizacion.Actualziar(ActualizacionProducto);
                 var resp = new MdlMensajeResp();
                 resp.Mensaje = "Actualizacion Exitosa";

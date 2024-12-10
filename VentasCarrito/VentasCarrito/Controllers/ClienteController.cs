@@ -28,12 +28,12 @@ namespace VentasCarrito.Controllers
                         lstCliente.Add(
                           new ClienteApi
                           {
-                            Id_Cliente = cli.Id_Cliente,
-                            Nombre = cli.Nombre,
-                            Apellido = cli.Apellido,
-                            Dpi = cli.Dpi,
-                            Telefono = cli.Telefono,
-                            TotalVentas = cli.TotalVentas
+                            id_cliente = cli.Id_Cliente,
+                            nombre = cli.Nombre,
+                            apellido = cli.Apellido,
+                            dpi = cli.Dpi,
+                            telefono = cli.Telefono,
+                            totalventas = cli.TotalVentas
                           }
                           );
 
@@ -64,12 +64,12 @@ namespace VentasCarrito.Controllers
             var InsercionCliente = new MdlClienteDb();
             try
             {
-                InsercionCliente.Id_Cliente = pRequest.Id_Cliente;
-                InsercionCliente.Nombre = pRequest.Nombre;
-                InsercionCliente.Apellido = pRequest.Apellido;
-                InsercionCliente.Dpi = pRequest.Dpi;
-                InsercionCliente.Telefono = pRequest.Telefono;
-                InsercionCliente.TotalVentas = pRequest.TotalVentas;
+                InsercionCliente.Id_Cliente = pRequest.id_cliente;
+                InsercionCliente.Nombre = pRequest.nombre;
+                InsercionCliente.Apellido = pRequest.apellido;
+                InsercionCliente.Dpi = pRequest.dpi;
+                InsercionCliente.Telefono = pRequest.telefono;
+                InsercionCliente.TotalVentas = pRequest.totalventas;
                 ClienteInsercion.Insertar(InsercionCliente);
                 var resp = new MdlMensajeResp();
                 resp.Mensaje = "La insercion a sido exitosa";
@@ -90,12 +90,12 @@ namespace VentasCarrito.Controllers
 
             try
             {
-                ActualizacionCliente.Id_Cliente = pRequest.Id_Cliente;
-                ActualizacionCliente.Nombre = pRequest.Nombre;
-                ActualizacionCliente.Apellido = pRequest.Apellido;
-                ActualizacionCliente.Dpi = pRequest.Dpi;
-                ActualizacionCliente.Telefono = pRequest.Telefono;
-                ActualizacionCliente.TotalVentas = pRequest.TotalVentas;
+                ActualizacionCliente.Id_Cliente = pRequest.id_cliente;
+                ActualizacionCliente.Nombre = pRequest.nombre;
+                ActualizacionCliente.Apellido = pRequest.apellido;
+                ActualizacionCliente.Dpi = pRequest.dpi;
+                ActualizacionCliente.Telefono = pRequest.telefono;
+                ActualizacionCliente.TotalVentas = pRequest.totalventas;
                 ClienteActualizacion.Actualizar(ActualizacionCliente);
                 var resp = new MdlMensajeResp();
                 resp.Mensaje = "La Actualizacion a sido exitosa";
@@ -120,7 +120,7 @@ namespace VentasCarrito.Controllers
 
             try
             {
-                EliminacionCliente.Id_Cliente = pRequest.Id_Cliente;
+                EliminacionCliente.Id_Cliente = pRequest.id_cliente;
                 ClienteEliminacion.Eliminar(EliminacionCliente);
                 var resp = new MdlMensajeResp();
                 resp.Mensaje = "La Eliminacion a sido exitosa";
