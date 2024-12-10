@@ -2,13 +2,13 @@
 {
     public class VentasApi
     {
-        public int IdProducto { get; set; }
-        public int IdCliente { get; set; }
-        public int IdVenta { get; set; }
-        public string Establecimiento { get; set; }
-        public decimal Precio { get; set; }
-        public int CantidadProducto { get; set; }
-        public DateTime Fecha_Venta { get; set; }
+        public int id_producto { get; set; }
+        public int id_cliente { get; set; }
+        public int id_venta { get; set; }
+        public string establecimiento { get; set; }
+        public decimal precio { get; set; }
+        public int cantidad_producto { get; set; }
+        public DateTime fecha_venta { get; set; }
         public decimal Descuento { get; set; }
 
     }

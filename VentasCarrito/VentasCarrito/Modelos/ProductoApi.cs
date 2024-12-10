@@ -4,8 +4,8 @@
     {
         public int id_producto { get; set; }
         public string nombre_producto { get; set; }
-        public int Existencia { get; set; }
-        public string Marca { get; set; }
-        public decimal Precio { get; set; }
+        public int existencia { get; set; }
+        public string marca { get; set; }
+        public decimal precio { get; set; }
     }
 }

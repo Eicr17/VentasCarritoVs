@@ -31,13 +31,13 @@ namespace VentasCarrito.Controllers
                         lstVentas.Add(
                             new VentasApi
                             {
-                                IdCliente = vent.IdCliente,
-                                IdProducto = vent.IdProducto,
-                                IdVenta = vent.IdVenta,
-                                Establecimiento = vent.Establecimiento,
-                                Precio = vent.Precio,
-                                CantidadProducto = vent.CantidadProducto,
-                                Fecha_Venta = vent.Fecha_Venta,
+                                id_cliente = vent.IdCliente,
+                                id_producto = vent.IdProducto,
+                                id_venta = vent.IdVenta,
+                                establecimiento = vent.Establecimiento,
+                                precio = vent.Precio,
+                                cantidad_producto = vent.CantidadProducto,
+                                fecha_venta = vent.Fecha_Venta,
                                 Descuento = vent.Descuento
                             }
                             );
@@ -67,12 +67,12 @@ namespace VentasCarrito.Controllers
 
             try
             {
-                DatosInsercion.IdProducto = pRequest.IdProducto;
-                DatosInsercion.IdCliente = pRequest.IdCliente;
-                DatosInsercion.IdVenta = pRequest.IdVenta;
-                DatosInsercion.Establecimiento = pRequest.Establecimiento;
-                DatosInsercion.Precio = pRequest.Precio;
-                DatosInsercion.Fecha_Venta = pRequest.Fecha_Venta;
+                DatosInsercion.IdProducto = pRequest.id_producto;
+                DatosInsercion.IdCliente = pRequest.id_cliente;
+                DatosInsercion.IdVenta = pRequest.id_venta;
+                DatosInsercion.Establecimiento = pRequest.establecimiento;
+                DatosInsercion.Precio = pRequest.precio;
+                DatosInsercion.Fecha_Venta = pRequest.fecha_venta;
                 DatosInsercion.Descuento = pRequest.Descuento;
                 InsercionDatos.Insertar(DatosInsercion);
                 var resp = new MdlMensajeResp();
@@ -99,13 +99,13 @@ namespace VentasCarrito.Controllers
 
             try
             {
-                VentasActualizacion.IdVenta = pRequest.IdVenta;
-                VentasActualizacion.IdCliente = pRequest.IdCliente;
-                VentasActualizacion.IdProducto = pRequest.IdProducto;
-                VentasActualizacion.Establecimiento = pRequest.Establecimiento;
-                VentasActualizacion.Precio = pRequest.Precio;
-                VentasActualizacion.CantidadProducto = pRequest.CantidadProducto;
-                VentasActualizacion.Fecha_Venta = pRequest.Fecha_Venta;
+                VentasActualizacion.IdVenta = pRequest.id_venta;
+                VentasActualizacion.IdCliente = pRequest.id_cliente;
+                VentasActualizacion.IdProducto = pRequest.id_producto;
+                VentasActualizacion.Establecimiento = pRequest.establecimiento;
+                VentasActualizacion.Precio = pRequest.precio;
+                VentasActualizacion.CantidadProducto = pRequest.cantidad_producto;
+                VentasActualizacion.Fecha_Venta = pRequest.fecha_venta;
                 VentasActualizacion.Descuento = pRequest.Descuento;
                 ActalizacionVentas.Actualizar(VentasActualizacion);
                 resp.Mensaje = "La Actualizacion a sido Exitosa";
@@ -132,7 +132,7 @@ namespace VentasCarrito.Controllers
 
             try
             {
-                VentasElimianr.IdVenta = pRequest.IdVenta;
+                VentasElimianr.IdVenta = pRequest.id_venta;
                 EliminarVentas.Delete(VentasElimianr);
                 Resp.Mensaje = "La Eliminacion a sido Exitosa";
                 return Ok(Resp);

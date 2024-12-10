@@ -2,16 +2,16 @@
 {
     public class ClienteApi
     {
-        public int Id_Cliente { get; set; }
-        public string Nombre { get; set; }
+        public int id_cliente { get; set; }
+        public string nombre { get; set; }
 
-        public string Apellido { get; set; }
+        public string apellido { get; set; }
 
-        public string Dpi { get; set; }
+        public string dpi { get; set; }
 
-        public string Telefono { get; set; }
+        public string telefono { get; set; }
 
-        public double TotalVentas { get; set; }
+        public double totalventas { get; set; }
 
         
 
