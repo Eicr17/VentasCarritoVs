@@ -45,18 +45,17 @@ namespace CarritosVentaLibrerira.Servicios
         }
 
 
-        public void Insertar(MdlProductoDb item)
+        public void Insertar(MdlCrearProductoDb item)
         {
             var conn = new SqlConnection("Data Source=Eicr; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10;");
             conn.Open();
 
-            string sql = "Insert into Producto(Id_Producto,Nombre_Producto,Existencia,Marca,Precio)  " +
-                "Values(@idproducto,@nombre,@existencia,@marca,@precio)";
+            string sql = "Insert into Producto(Nombre_Producto,Existencia,Marca,Precio)  " +
+                "Values(@nombre,@existencia,@marca,@precio)";
 
             var cmd = new SqlCommand();
             cmd.Connection = conn;
             cmd.CommandText = sql;
-            cmd.Parameters.Add("@idproducto", SqlDbType.Int).Value = item.Id_Producto;
             cmd.Parameters.Add("@nombre", SqlDbType.VarChar).Value = item.Nombre_Producto;
             cmd.Parameters.Add("@existencia", SqlDbType.Int).Value = item.Existencia;
             cmd.Parameters.Add("@marca", SqlDbType.VarChar).Value = item.Marca;

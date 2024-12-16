@@ -61,10 +61,9 @@ namespace VentasCarrito.Controllers
 
 
             var ClienteInsercion = new SrvCliente();
-            var InsercionCliente = new MdlClienteDb();
+            var InsercionCliente = new MdlClienteCrearDb();
             try
             {
-                InsercionCliente.Id_Cliente = pRequest.id_cliente;
                 InsercionCliente.Nombre = pRequest.nombre;
                 InsercionCliente.Apellido = pRequest.apellido;
                 InsercionCliente.Dpi = pRequest.dpi;

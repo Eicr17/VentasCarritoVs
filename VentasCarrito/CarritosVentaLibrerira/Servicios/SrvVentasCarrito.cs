@@ -45,21 +45,17 @@ namespace CarritosVentaLibrerira.Servicios
         }
 
 
-        public void Insertar(MdlVentasDb item)
+        public void Insertar(MdlVentasCrearDb item)
         {
             var cn = new SqlConnection("Data Source=Eicr; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10");
             cn.Open();
 
-            string sql = "Insert into VentasCarrito(Id_Producto,Id_Cliente,Id_Venta,Establecimiento,Precio,Cantidad_Producto,Fecha_Venta)  " +
-                "Values(@IdProducto,@IdCliente,@IdVenta,@Establecimiento,@Precio,@Cantidad,@FechaVenta)";
+            string sql = "Insert into VentasCarrito(Establecimiento,Precio,Cantidad_Producto,Fecha_Venta)  " +
+                "Values(@Establecimiento,@Precio,@Cantidad,@FechaVenta)";
 
             var cmd = new SqlCommand();
             cmd.Connection = cn;
             cmd.CommandText = sql;
-
-            cmd.Parameters.Add("@IdProducto", SqlDbType.Int).Value = item.IdProducto;
-            cmd.Parameters.Add("@IdCliente", SqlDbType.Int).Value = item.IdCliente;
-            cmd.Parameters.Add("@IdVenta", SqlDbType.Int).Value = item.IdVenta;
             cmd.Parameters.Add("@Establecimiento", SqlDbType.VarChar).Value = item.Establecimiento;
             cmd.Parameters.Add("@Precio", SqlDbType.Decimal).Value = item.Precio;
             cmd.Parameters.Add("@Cantidad", SqlDbType.Int).Value = item.CantidadProducto;
