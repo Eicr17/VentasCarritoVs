@@ -18,7 +18,7 @@ namespace CarritosVentaLibrerira.Servicios
         {
             var lista = new List<MdlClienteDb>();
 
-            SqlConnection cn = new SqlConnection("Data Source=Eicr; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10;");
+            SqlConnection cn = new SqlConnection("Data Source=192.168.1.97; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10;");
             cn.Open();
             SqlCommand cmd = new SqlCommand("Select * from Cliente");
             cmd.Connection = cn;
@@ -34,7 +34,7 @@ namespace CarritosVentaLibrerira.Servicios
                     item.Apellido = dr.GetValue(2).ToString();
                     item.Dpi = dr.GetValue(3).ToString();
                     item.Telefono = dr.GetValue(4).ToString();
-                    item.TotalVentas = int.Parse(dr.GetValue(5).ToString());
+                    item.TotalVentas = double.Parse(dr.GetValue(5).ToString());
                     lista.Add(item);
 
                 }
@@ -50,7 +50,7 @@ namespace CarritosVentaLibrerira.Servicios
         public void Insertar(MdlClienteCrearDb item)
         {
 
-            var conn = new SqlConnection("Data Source=Eicr; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10;");
+            var conn = new SqlConnection("Data Source=192.168.1.97; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10;");
             conn.Open();
 
             string sql = "INSERT INTO Cliente(nombre, apellido, dpi, telefono, totalventas) " +
@@ -76,7 +76,7 @@ namespace CarritosVentaLibrerira.Servicios
         public void Actualizar(MdlClienteDb item) 
         
         {
-            var conn = new SqlConnection("Data Source=Eicr; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10;");
+            var conn = new SqlConnection("Data Source=192.168.1.97; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10;");
             conn.Open();
 
             string sql = "Update Cliente set  Nombre=@Nombre, Apellido=@Apellido, Dpi=@Dpi, Telefono = @Telefono, TotalVentas=@Totalventas " +
@@ -100,7 +100,7 @@ namespace CarritosVentaLibrerira.Servicios
 
         public void Eliminar(MdlClienteDb item)
         {
-            var conn = new SqlConnection("Data Source=Eicr; Initial Catalog=dbCarritoCompras; User=sa; Password= Admin10;");
+            var conn = new SqlConnection("Data Source=192.168.1.97; Initial Catalog=dbCarritoCompras; User=sa; Password= Admin10;");
             conn.Open();
 
             string sql = "DELETE FROM Cliente " +

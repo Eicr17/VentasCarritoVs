@@ -14,7 +14,7 @@ namespace CarritosVentaLibrerira.Servicios
         public static List<MdlVentasDb> ObtenerVentas()
         {
             var lista = new List<MdlVentasDb>();
-            SqlConnection cn = new SqlConnection("Data source=Eicr; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10");
+            SqlConnection cn = new SqlConnection("Data source=192.168.1.97; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10");
             cn.Open();
             SqlCommand cmd = new SqlCommand("Select * From VentasCarrito");
             cmd.Connection = cn;
@@ -47,11 +47,11 @@ namespace CarritosVentaLibrerira.Servicios
 
         public void Insertar(MdlVentasCrearDb item)
         {
-            var cn = new SqlConnection("Data Source=Eicr; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10");
+            var cn = new SqlConnection("Data Source=192.168.1.97; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10");
             cn.Open();
 
-            string sql = "Insert into VentasCarrito(Establecimiento,Precio,Cantidad_Producto,Fecha_Venta)  " +
-                "Values(@Establecimiento,@Precio,@Cantidad,@FechaVenta)";
+            string sql = "Insert into VentasCarrito(Establecimiento,Precio,Cantidad_Producto,Descuento)  " +
+                "Values(@Establecimiento,@Precio,@Cantidad,@Descuento)";
 
             var cmd = new SqlCommand();
             cmd.Connection = cn;
@@ -59,7 +59,6 @@ namespace CarritosVentaLibrerira.Servicios
             cmd.Parameters.Add("@Establecimiento", SqlDbType.VarChar).Value = item.Establecimiento;
             cmd.Parameters.Add("@Precio", SqlDbType.Decimal).Value = item.Precio;
             cmd.Parameters.Add("@Cantidad", SqlDbType.Int).Value = item.CantidadProducto;
-            cmd.Parameters.Add("@FechaVenta", SqlDbType.DateTime).Value = item.Fecha_Venta;
             cmd.Parameters.Add("@Desceunto", SqlDbType.Decimal).Value = item.Descuento;
             cmd.ExecuteNonQuery();
 
@@ -70,10 +69,10 @@ namespace CarritosVentaLibrerira.Servicios
 
         public void Actualizar(MdlVentasDb Item) {
 
-            var cn = new SqlConnection("Data Source=Eicr; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10");
+            var cn = new SqlConnection("Data Source=192.168.1.97; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10");
             cn.Open();
 
-            string sql = "Update VentasCarrito set  Establecimiento = @Establecimiento,  Precio=@Precio, Cantidad_Producto=@Cantidad, Fecha_Venta=@FechaVenta, Descuento=@Descuento " +
+            string sql = "Update VentasCarrito set  Establecimiento = @Establecimiento,  Precio=@Precio, Cantidad_Producto=@Cantidad,  Descuento=@Descuento " +
                 "Where Id_Venta= @IdVenta and Id_Cliente = @IdCliente and Id_Producto = @IdProducto";
 
             var cmd = new SqlCommand();
@@ -86,7 +85,6 @@ namespace CarritosVentaLibrerira.Servicios
             cmd.Parameters.Add("@Establecimiento", SqlDbType.VarChar).Value = Item.Establecimiento;
             cmd.Parameters.Add("@Precio", SqlDbType.Decimal).Value = Item.Precio;
             cmd.Parameters.Add("@Cantidad", SqlDbType.Int).Value = Item.CantidadProducto;
-            cmd.Parameters.Add("@FechaVenta", SqlDbType.DateTime).Value = Item.Fecha_Venta;
             cmd.Parameters.Add("@Descuento", SqlDbType.Decimal).Value = Item.Descuento;
             cmd.ExecuteNonQuery();
 

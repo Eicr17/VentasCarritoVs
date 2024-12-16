@@ -12,7 +12,7 @@ namespace CarritosVentaLibrerira.Modelos
         public string Nombre_Producto { get; set; }
         public int Existencia { get; set; }
         public string Marca { get; set; }
-        public decimal Precio { get; set; }
+        public double Precio { get; set; }
     }
 
     
