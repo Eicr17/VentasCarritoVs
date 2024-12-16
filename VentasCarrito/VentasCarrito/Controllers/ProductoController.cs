@@ -58,11 +58,10 @@ namespace VentasCarrito.Controllers
         public IActionResult Crear([FromBody] ProductoApi Item)
         {
             var ProductoInsercion = new SrvProducto();
-            var InsercionProducto = new MdlProductoDb();
+            var InsercionProducto = new MdlCrearProductoDb();
 
             try
             {
-                InsercionProducto.Id_Producto = Item.id_producto;
                 InsercionProducto.Nombre_Producto = Item.nombre_producto;
                 InsercionProducto.Existencia = Item.existencia;
                 InsercionProducto.Marca = Item.marca;

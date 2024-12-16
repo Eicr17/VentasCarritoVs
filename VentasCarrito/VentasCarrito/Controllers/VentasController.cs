@@ -38,7 +38,7 @@ namespace VentasCarrito.Controllers
                                 precio = vent.Precio,
                                 cantidad_producto = vent.CantidadProducto,
                                 fecha_venta = vent.Fecha_Venta,
-                                Descuento = vent.Descuento
+                                descuento = vent.Descuento
                             }
                             );
                     }
@@ -62,18 +62,16 @@ namespace VentasCarrito.Controllers
         public IActionResult InsertarVenta([FromBody] VentasApi pRequest)
         {
             var InsercionDatos = new SrvVentasCarrito();
-            var DatosInsercion = new MdlVentasDb();
+            var DatosInsercion = new MdlVentasCrearDb();
             var Resp = new MdlMensajeResp();
 
             try
             {
-                DatosInsercion.IdProducto = pRequest.id_producto;
-                DatosInsercion.IdCliente = pRequest.id_cliente;
-                DatosInsercion.IdVenta = pRequest.id_venta;
+             
                 DatosInsercion.Establecimiento = pRequest.establecimiento;
                 DatosInsercion.Precio = pRequest.precio;
                 DatosInsercion.Fecha_Venta = pRequest.fecha_venta;
-                DatosInsercion.Descuento = pRequest.Descuento;
+                DatosInsercion.Descuento = pRequest.descuento;
                 InsercionDatos.Insertar(DatosInsercion);
                 var resp = new MdlMensajeResp();
                 resp.Mensaje = "Insercion Exitosa";
@@ -106,7 +104,7 @@ namespace VentasCarrito.Controllers
                 VentasActualizacion.Precio = pRequest.precio;
                 VentasActualizacion.CantidadProducto = pRequest.cantidad_producto;
                 VentasActualizacion.Fecha_Venta = pRequest.fecha_venta;
-                VentasActualizacion.Descuento = pRequest.Descuento;
+                VentasActualizacion.Descuento = pRequest.descuento;
                 ActalizacionVentas.Actualizar(VentasActualizacion);
                 resp.Mensaje = "La Actualizacion a sido Exitosa";
                 return Ok(resp);

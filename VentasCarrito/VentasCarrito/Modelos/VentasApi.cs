@@ -9,7 +9,7 @@
         public decimal precio { get; set; }
         public int cantidad_producto { get; set; }
         public DateTime fecha_venta { get; set; }
-        public decimal Descuento { get; set; }
+        public decimal descuento { get; set; }
 
     }
 }
