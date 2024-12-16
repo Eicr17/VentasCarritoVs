@@ -15,7 +15,7 @@ namespace CarritosVentaLibrerira.Servicios
         {
 
             var lista = new List<MdlProductoDb>();
-            SqlConnection cn = new SqlConnection("Data Source= Eicr; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10;");
+            SqlConnection cn = new SqlConnection("Data Source= 192.168.1.97; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10;");
             cn.Open();
             SqlCommand cmd = new SqlCommand("Select * From Producto");
             cmd.Connection = cn;
@@ -32,7 +32,7 @@ namespace CarritosVentaLibrerira.Servicios
                     item.Nombre_Producto = dr.GetValue(1).ToString();
                     item.Existencia = int.Parse(dr.GetValue(2).ToString());
                     item.Marca = dr.GetValue(3).ToString();
-                    item.Precio = int.Parse(dr.GetValue(4).ToString());
+                    item.Precio = double.Parse(dr.GetValue(4).ToString());
                     lista.Add(item);
 
 
@@ -47,7 +47,7 @@ namespace CarritosVentaLibrerira.Servicios
 
         public void Insertar(MdlCrearProductoDb item)
         {
-            var conn = new SqlConnection("Data Source=Eicr; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10;");
+            var conn = new SqlConnection("Data Source=192.168.1.97; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10;");
             conn.Open();
 
             string sql = "Insert into Producto(Nombre_Producto,Existencia,Marca,Precio)  " +
@@ -70,7 +70,7 @@ namespace CarritosVentaLibrerira.Servicios
 
         public void Actualziar(MdlProductoDb Item)
         {
-            var conn = new SqlConnection("Data Source=Eicr; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10;");
+            var conn = new SqlConnection("Data Source=192.168.1.97; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10;");
             conn.Open();
 
             string sql = "Update Producto set   Nombre_Producto=@nombre, Existencia=@existencia, Marca=@marca, Precio=@Precio  " +
@@ -93,7 +93,7 @@ namespace CarritosVentaLibrerira.Servicios
 
         public void Eliminar(MdlProductoDb Item)
         {
-            var conn = new SqlConnection("Data Source=Eicr; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10;");
+            var conn = new SqlConnection("Data Source=192.168.1.97; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10;");
             conn.Open();
             string sql = "Delete From Producto " +
                 "Where Id_Producto = @Id_Producto ";
@@ -102,7 +102,6 @@ namespace CarritosVentaLibrerira.Servicios
             cmd.Connection = conn;
             cmd.CommandText = sql;
             cmd.Parameters.Add("@Id_Producto", SqlDbType.Int).Value = Item.Id_Producto;
-            cmd.Parameters.Add("@");
             cmd.ExecuteNonQuery();
 
             conn.Close();
