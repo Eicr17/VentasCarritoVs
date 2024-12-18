@@ -5,13 +5,9 @@ namespace VentasCarrito.Modelos
 {
     public class MdlMensajeResp
     {
-        public List<MdlClienteDb> Cliente { get; set; }
-        public List<MdlProductoDb> Producto { get; set; }
-        public List<MdlVentasDb> Ventas { get; set; }
-
-        public int Total { get; set; }
-        public string MensajeError { get; set; }
-        public int CodigoOperacion { get; set; }
-        public string Mensaje { get; set; }
+        public int total { get; set; }
+        public string mensaje_error { get; set; }
+        public int codigo_operacion { get; set; }
+        public string mensaje_exitoso { get; set; }
     }
 }
