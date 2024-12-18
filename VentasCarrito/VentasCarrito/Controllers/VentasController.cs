@@ -11,7 +11,7 @@ namespace VentasCarrito.Controllers
     public class VentasController : ControllerBase
     {
         [HttpGet]
-        [Route("ObtenerVentas")]
+        [Route("Obtener")]
 
         public IActionResult Get()
         {
@@ -61,7 +61,7 @@ namespace VentasCarrito.Controllers
         }
 
         [HttpPost]
-        [Route("InsertarVentas")]
+        [Route("Insertar")]
 
         public IActionResult InsertarVenta([FromBody] VentasApi pRequest)
         {
@@ -92,7 +92,7 @@ namespace VentasCarrito.Controllers
 
 
         [HttpPut]
-        [Route("ActualizarVentas")]
+        [Route("Actualizar")]
 
         public IActionResult Actualizar([FromBody] VentasApi pRequest)
         {
@@ -125,7 +125,7 @@ namespace VentasCarrito.Controllers
 
 
         [HttpPost]
-        [Route("EliminarVentas")]
+        [Route("Eliminar")]
 
         public IActionResult Delete([FromBody] VentasApi pRequest)
         {
