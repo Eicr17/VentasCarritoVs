@@ -32,6 +32,8 @@ namespace CarritosVentaLibrerira.Servicios
                     item.Precio = decimal.Parse(dr.GetValue(4).ToString());
                     item.CantidadProducto = int.Parse(dr.GetValue(5).ToString());
                     item.Fecha_Venta = DateTime.Parse(dr.GetValue(6).ToString());
+                    item.Descuento = decimal.Parse(dr.GetValue(7).ToString());
+
                     lista.Add(item);
 
 
@@ -50,15 +52,18 @@ namespace CarritosVentaLibrerira.Servicios
             var cn = new SqlConnection("Data Source=192.168.1.97; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10");
             cn.Open();
 
-            string sql = "Insert into VentasCarrito(Establecimiento,Precio,Cantidad_Producto,Descuento)  " +
-                "Values(@Establecimiento,@Precio,@Cantidad,@Descuento)";
+            string sql = "Insert into VentasCarrito(id_producto,id_cliente,Establecimiento,Precio,Cantidad_Producto,Fecha_Venta,Descuento)  " +
+                "Values(@id_producto,@id_cliente,@Establecimiento,@Precio,@Cantidad,@FechaVenta,@Descuento)";
 
             var cmd = new SqlCommand();
             cmd.Connection = cn;
             cmd.CommandText = sql;
+            cmd.Parameters.Add("@id_producto", SqlDbType.VarChar).Value = item.Id_Producto;
+            cmd.Parameters.Add("@id_cliente", SqlDbType.VarChar).Value = item.Id_Cliente;
             cmd.Parameters.Add("@Establecimiento", SqlDbType.VarChar).Value = item.Establecimiento;
             cmd.Parameters.Add("@Precio", SqlDbType.Decimal).Value = item.Precio;   
             cmd.Parameters.Add("@Cantidad", SqlDbType.Int).Value = item.CantidadProducto;
+            cmd.Parameters.Add("@FechaVenta", SqlDbType.DateTime).Value = item.Fecha_Venta;
             cmd.Parameters.Add("@Descuento", SqlDbType.Decimal).Value = item.Descuento;
             cmd.ExecuteNonQuery();
 
