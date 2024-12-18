@@ -8,6 +8,9 @@ namespace CarritosVentaLibrerira.Modelos
 {
     public  class MdlVentasCrearDb
     {
+        public int Id_Producto { get; set; }
+        public int Id_Cliente { get; set; }
+
         public string Establecimiento { get; set; }
         public decimal Precio { get; set; }
         public int CantidadProducto { get; set; }
