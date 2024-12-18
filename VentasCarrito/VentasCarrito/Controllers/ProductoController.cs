@@ -11,6 +11,7 @@ namespace VentasCarrito.Controllers
     public class ProductoController : ControllerBase
     {
         [HttpGet]
+        [Route("ObtenerProducto")]
         public IActionResult Get()
         {
             var Resp = new ApiRespuesta<ProductoApi>();
@@ -39,10 +40,10 @@ namespace VentasCarrito.Controllers
                                                   
                    }
                     );
-                Resp.Datos = lstProducto;
-                Resp.CodigoOperacion = 0;
-                Resp.MensajeError = string.Empty;
-                Resp.TotalRegistros = lstProdProducto.Count;
+                Resp.datos = lstProducto;
+                Resp.codigo_operacion = 0;
+                Resp.mensaje_error = string.Empty;
+                Resp.total_registros = lstProdProducto.Count;
                 return Ok(Resp);
             }
             catch (Exception ex) 
@@ -55,6 +56,7 @@ namespace VentasCarrito.Controllers
         }
 
         [HttpPost]
+        [Route("CrearProducto")]
         public IActionResult Crear([FromBody] ProductoApi Item)
         {
             var ProductoInsercion = new SrvProducto();
@@ -68,7 +70,7 @@ namespace VentasCarrito.Controllers
                 InsercionProducto.Precio = Item.precio;
                 ProductoInsercion.Insertar(InsercionProducto);
                 var resp = new MdlMensajeResp();
-                resp.Mensaje = "Insercion Exitosa";
+                resp.mensaje_exitoso = "Insercion Exitosa";
                 return Ok(resp);
 
             }
@@ -81,8 +83,8 @@ namespace VentasCarrito.Controllers
         
         }
 
-
         [HttpPut]
+        [Route("ActualizarProducto")]
         public IActionResult Actualizar([FromBody] ProductoApi Item) 
         {
             var ProductoActualizacion = new SrvProducto();
@@ -97,7 +99,7 @@ namespace VentasCarrito.Controllers
                 ActualizacionProducto.Precio = Item.precio;
                 ProductoActualizacion.Actualziar(ActualizacionProducto);
                 var resp = new MdlMensajeResp();
-                resp.Mensaje = "Actualizacion Exitosa";
+                resp.mensaje_exitoso = "Actualizacion Exitosa";
                 return Ok(resp);
             }
             catch (Exception ex)
@@ -108,8 +110,8 @@ namespace VentasCarrito.Controllers
         
         
         }
-
-        [HttpDelete]
+        [HttpPost]
+        [Route("EliminarProducto")]
         public IActionResult Eliminar([FromBody] ProductoApi Item)
         {
             var ProductoEliminacion = new SrvProducto();
@@ -120,7 +122,7 @@ namespace VentasCarrito.Controllers
                 EliminacionProducto.Id_Producto = Item.id_producto;
                 ProductoEliminacion.Eliminar(EliminacionProducto);
                 var resp = new MdlMensajeResp();
-                resp.Mensaje = "Eliminacion Exitosa";
+                resp.mensaje_exitoso = "Eliminacion Exitosa";
                 return Ok(resp);
             }
             catch (Exception ex )

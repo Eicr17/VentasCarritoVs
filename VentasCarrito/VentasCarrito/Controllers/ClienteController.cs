@@ -12,6 +12,7 @@ namespace VentasCarrito.Controllers
     public class ClienteController : ControllerBase
     {
         [HttpGet]
+        [Route("ObtenerCliente")]
         public IActionResult Get( )
         {
             var respuesta = new ApiRespuesta<ClienteApi>();
@@ -39,10 +40,10 @@ namespace VentasCarrito.Controllers
 
                     });
 
-                respuesta.Datos = lstCliente;
-                respuesta.CodigoOperacion = 0;
-                respuesta.MensajeError = string.Empty;
-                respuesta.TotalRegistros = lstProdCliente.Count;
+                respuesta.datos = lstCliente;
+                respuesta.codigo_operacion = 0;
+                respuesta.mensaje_error = string.Empty;
+                respuesta.total_registros = lstProdCliente.Count;
 
                 return Ok(respuesta);
 
@@ -56,6 +57,8 @@ namespace VentasCarrito.Controllers
         }
 
         [HttpPost]
+        [Route("CrearCliente")]
+
         public IActionResult Crear([FromBody] ClienteApi pRequest)
         {
 
@@ -71,7 +74,7 @@ namespace VentasCarrito.Controllers
                 InsercionCliente.TotalVentas = pRequest.totalventas;
                 ClienteInsercion.Insertar(InsercionCliente);
                 var resp = new MdlMensajeResp();
-                resp.Mensaje = "La insercion a sido exitosa";
+                resp.mensaje_exitoso = "La insercion a sido exitosa";
                 return Ok(resp);
             }
             catch (Exception ex)
@@ -82,6 +85,8 @@ namespace VentasCarrito.Controllers
         }
 
         [HttpPut]
+        [Route("ActualizarCliente")]
+
         public IActionResult Actualizar([FromBody] ClienteApi pRequest) 
         {
             var ClienteActualizacion =  new SrvCliente();
@@ -89,7 +94,6 @@ namespace VentasCarrito.Controllers
 
             try
             {
-                ActualizacionCliente.Id_Cliente = pRequest.id_cliente;
                 ActualizacionCliente.Nombre = pRequest.nombre;
                 ActualizacionCliente.Apellido = pRequest.apellido;
                 ActualizacionCliente.Dpi = pRequest.dpi;
@@ -97,12 +101,11 @@ namespace VentasCarrito.Controllers
                 ActualizacionCliente.TotalVentas = pRequest.totalventas;
                 ClienteActualizacion.Actualizar(ActualizacionCliente);
                 var resp = new MdlMensajeResp();
-                resp.Mensaje = "La Actualizacion a sido exitosa";
+                resp.mensaje_exitoso = "La Actualizacion a sido exitosa";
                 return Ok(resp);
             }
             catch (Exception ex)
             {
-
                 return BadRequest(ex.Message);
             }
         
@@ -111,7 +114,8 @@ namespace VentasCarrito.Controllers
 
         
 
-        [HttpDelete]
+        [HttpPost]
+        [Route("EliminarCliente")]
         public IActionResult Delete([FromBody] ClienteApi pRequest) 
         {
             var ClienteEliminacion = new SrvCliente();
@@ -122,7 +126,7 @@ namespace VentasCarrito.Controllers
                 EliminacionCliente.Id_Cliente = pRequest.id_cliente;
                 ClienteEliminacion.Eliminar(EliminacionCliente);
                 var resp = new MdlMensajeResp();
-                resp.Mensaje = "La Eliminacion a sido exitosa";
+                resp.mensaje_exitoso = "La Eliminacion a sido exitosa";
                 return Ok(resp);
             }
             catch (Exception ex)

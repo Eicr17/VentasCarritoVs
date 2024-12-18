@@ -1,4 +1,4 @@
-﻿using CarritosVentaLibrerira.Modelos;
+﻿    using CarritosVentaLibrerira.Modelos;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -57,9 +57,9 @@ namespace CarritosVentaLibrerira.Servicios
             cmd.Connection = cn;
             cmd.CommandText = sql;
             cmd.Parameters.Add("@Establecimiento", SqlDbType.VarChar).Value = item.Establecimiento;
-            cmd.Parameters.Add("@Precio", SqlDbType.Decimal).Value = item.Precio;
+            cmd.Parameters.Add("@Precio", SqlDbType.Decimal).Value = item.Precio;   
             cmd.Parameters.Add("@Cantidad", SqlDbType.Int).Value = item.CantidadProducto;
-            cmd.Parameters.Add("@Desceunto", SqlDbType.Decimal).Value = item.Descuento;
+            cmd.Parameters.Add("@Descuento", SqlDbType.Decimal).Value = item.Descuento;
             cmd.ExecuteNonQuery();
 
             cn.Close();
@@ -96,7 +96,7 @@ namespace CarritosVentaLibrerira.Servicios
 
         public void Delete(MdlVentasDb Item) {
 
-            var cn = new SqlConnection("Data Source=Eicr; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10;");
+            var cn = new SqlConnection("Data Source=192.168.1.97; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10;");
             cn.Open();
 
             string sql = "Delete from VentasCarrito " +
