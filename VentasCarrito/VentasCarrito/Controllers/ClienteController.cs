@@ -94,6 +94,7 @@ namespace VentasCarrito.Controllers
 
             try
             {
+                ActualizacionCliente.Id_Cliente = pRequest.id_cliente;
                 ActualizacionCliente.Nombre = pRequest.nombre;
                 ActualizacionCliente.Apellido = pRequest.apellido;
                 ActualizacionCliente.Dpi = pRequest.dpi;
