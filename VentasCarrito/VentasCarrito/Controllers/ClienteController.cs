@@ -12,7 +12,7 @@ namespace VentasCarrito.Controllers
     public class ClienteController : ControllerBase
     {
         [HttpGet]
-        [Route("ObtenerCliente")]
+        [Route("Obtener")]
         public IActionResult Get( )
         {
             var respuesta = new ApiRespuesta<ClienteApi>();
@@ -57,7 +57,7 @@ namespace VentasCarrito.Controllers
         }
 
         [HttpPost]
-        [Route("CrearCliente")]
+        [Route("Crear")]
 
         public IActionResult Crear([FromBody] ClienteApi pRequest)
         {
@@ -85,7 +85,7 @@ namespace VentasCarrito.Controllers
         }
 
         [HttpPut]
-        [Route("ActualizarCliente")]
+        [Route("Actualizar")]
 
         public IActionResult Actualizar([FromBody] ClienteApi pRequest) 
         {
@@ -115,7 +115,7 @@ namespace VentasCarrito.Controllers
         
 
         [HttpPost]
-        [Route("EliminarCliente")]
+        [Route("Eliminar")]
         public IActionResult Delete([FromBody] ClienteApi pRequest) 
         {
             var ClienteEliminacion = new SrvCliente();

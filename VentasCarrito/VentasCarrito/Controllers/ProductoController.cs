@@ -11,7 +11,7 @@ namespace VentasCarrito.Controllers
     public class ProductoController : ControllerBase
     {
         [HttpGet]
-        [Route("ObtenerProducto")]
+        [Route("Obtener")]
         public IActionResult Get()
         {
             var Resp = new ApiRespuesta<ProductoApi>();
@@ -56,7 +56,7 @@ namespace VentasCarrito.Controllers
         }
 
         [HttpPost]
-        [Route("CrearProducto")]
+        [Route("Crear")]
         public IActionResult Crear([FromBody] ProductoApi Item)
         {
             var ProductoInsercion = new SrvProducto();
@@ -84,7 +84,7 @@ namespace VentasCarrito.Controllers
         }
 
         [HttpPut]
-        [Route("ActualizarProducto")]
+        [Route("Actualizar")]
         public IActionResult Actualizar([FromBody] ProductoApi Item) 
         {
             var ProductoActualizacion = new SrvProducto();
@@ -111,7 +111,7 @@ namespace VentasCarrito.Controllers
         
         }
         [HttpPost]
-        [Route("EliminarProducto")]
+        [Route("Eliminar")]
         public IActionResult Eliminar([FromBody] ProductoApi Item)
         {
             var ProductoEliminacion = new SrvProducto();
