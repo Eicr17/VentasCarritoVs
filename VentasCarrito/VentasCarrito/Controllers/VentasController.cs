@@ -104,7 +104,9 @@ namespace VentasCarrito.Controllers
 
             try
             {
-                VentasActualizacion.IdVenta = pRequest.id_venta;           
+                VentasActualizacion.IdProducto = pRequest.id_producto;
+                VentasActualizacion.IdCliente = pRequest.id_cliente;
+                VentasActualizacion.IdVenta = pRequest.id_venta;    
                 VentasActualizacion.Establecimiento = pRequest.establecimiento;
                 VentasActualizacion.Precio = pRequest.precio;
                 VentasActualizacion.CantidadProducto = pRequest.cantidad_producto;
@@ -138,6 +140,9 @@ namespace VentasCarrito.Controllers
             try
             {
                 VentasEliminar.IdVenta = pRequest.id_venta;
+                VentasEliminar.IdProducto = pRequest.id_producto;
+                VentasEliminar.IdCliente = pRequest.id_venta;
+
                 EliminarVentas.Delete(VentasEliminar);
                 Resp.mensaje_exitoso = "La Eliminacion a sido Exitosa";
                 return Ok(Resp);

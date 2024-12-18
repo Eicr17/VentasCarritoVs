@@ -105,12 +105,16 @@ namespace CarritosVentaLibrerira.Servicios
             cn.Open();
 
             string sql = "Delete from VentasCarrito " +
-                "Where Id_Venta = @IdVenta";
+                "Where Id_Venta = @IdVenta AND Id_Producto = @IdProducto AND Id_Cliente = @IdCliente";
 
             var cmd = new SqlCommand();
             cmd.Connection = cn;
             cmd.CommandText = sql;
             cmd.Parameters.Add("@IdVenta", SqlDbType.Int).Value = Item.IdVenta;
+            cmd.Parameters.Add("@IdProducto", SqlDbType.Int).Value = Item.IdProducto;
+            cmd.Parameters.Add("@IdCliente", SqlDbType.Int).Value = Item.IdCliente;
+
+
             cmd.ExecuteNonQuery();
 
             cn.Close();
