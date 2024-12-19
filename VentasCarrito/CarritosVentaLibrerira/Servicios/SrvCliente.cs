@@ -14,9 +14,9 @@ namespace CarritosVentaLibrerira.Servicios
 {
     public class SrvCliente
     {
-        public  static List<MdlClienteDb> GetCliente()
+        public  static List<MdlCliente> ObtenerCliente()
         {
-            var lista = new List<MdlClienteDb>();
+            var lista = new List<MdlCliente>();
 
             SqlConnection cn = new SqlConnection("Data Source=192.168.1.97; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10;");
             cn.Open();
@@ -28,7 +28,7 @@ namespace CarritosVentaLibrerira.Servicios
             {
                 while (dr.Read())
                 {
-                    var item = new MdlClienteDb();
+                    var item = new MdlCliente();
                     item.Id_Cliente = int.Parse(dr.GetValue(0).ToString());
                     item.Nombre = dr.GetValue(1).ToString();
                     item.Apellido = dr.GetValue(2).ToString();
@@ -47,7 +47,7 @@ namespace CarritosVentaLibrerira.Servicios
 
         }
 
-        public void Insertar(MdlClienteCrearDb item)
+        public void Insertar(MdlClienteCrear item)
         {
 
             var conn = new SqlConnection("Data Source=192.168.1.97; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10;");
@@ -73,7 +73,7 @@ namespace CarritosVentaLibrerira.Servicios
         }
 
 
-        public void Actualizar(MdlClienteDb item) 
+        public void Actualizar(MdlClienteActualizar item) 
         
         {
             var conn = new SqlConnection("Data Source=192.168.1.97; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10;");
@@ -98,7 +98,7 @@ namespace CarritosVentaLibrerira.Servicios
             conn.Close();
         }
 
-        public void Eliminar(MdlClienteDb item)
+        public void Eliminar(MdlClienteEliminar item)
         {
             var conn = new SqlConnection("Data Source=192.168.1.97; Initial Catalog=dbCarritoCompras; User=sa; Password= Admin10;");
             conn.Open();

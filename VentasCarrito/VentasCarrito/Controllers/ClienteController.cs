@@ -16,13 +16,13 @@ namespace VentasCarrito.Controllers
         public IActionResult Get( )
         {
             var respuesta = new ApiRespuesta<ClienteApi>();
-            var lstProdCliente = new List<MdlClienteDb>();
+            var lstProdCliente = new List<MdlCliente>();
             var lstCliente = new List<ClienteApi>();
 
 
             try
             {
-                lstProdCliente = SrvCliente.GetCliente();
+                lstProdCliente = SrvCliente.ObtenerCliente();
                 lstProdCliente.ForEach(
                     cli =>
                     {
@@ -64,7 +64,7 @@ namespace VentasCarrito.Controllers
 
 
             var ClienteInsercion = new SrvCliente();
-            var InsercionCliente = new MdlClienteCrearDb();
+            var InsercionCliente = new MdlClienteCrear();
             try
             {
                 InsercionCliente.Nombre = pRequest.nombre;
@@ -90,7 +90,7 @@ namespace VentasCarrito.Controllers
         public IActionResult Actualizar([FromBody] ClienteApi pRequest) 
         {
             var ClienteActualizacion =  new SrvCliente();
-            var ActualizacionCliente = new MdlClienteDb();
+            var ActualizacionCliente = new MdlClienteActualizar();
 
             try
             {
@@ -120,7 +120,7 @@ namespace VentasCarrito.Controllers
         public IActionResult Delete([FromBody] ClienteApi pRequest) 
         {
             var ClienteEliminacion = new SrvCliente();
-            var EliminacionCliente = new MdlClienteDb();
+            var EliminacionCliente = new MdlClienteEliminar();
 
             try
             {

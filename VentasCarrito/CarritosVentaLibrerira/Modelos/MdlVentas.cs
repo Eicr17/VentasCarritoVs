@@ -6,16 +6,18 @@ using System.Threading.Tasks;
 
 namespace CarritosVentaLibrerira.Modelos
 {
-    public  class MdlVentasCrearDb
+    public class MdlVentas
     {
-        public int Id_Producto { get; set; }
-        public int Id_Cliente { get; set; }
-
+        public int IdProducto { get; set; }
+        public int IdCliente { get; set; }
+        public int IdVenta { get; set; }
         public string Establecimiento { get; set; }
         public decimal Precio { get; set; }
         public int CantidadProducto { get; set; }
-        public DateTime Fecha_Venta { get; set; }
+        public DateTime  Fecha_Venta { get; set; }
         public decimal Descuento { get; set; }
+
+
 
     }
 }

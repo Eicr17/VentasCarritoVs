@@ -18,7 +18,7 @@ namespace VentasCarrito.Controllers
 
             var respuesta = new ApiRespuesta<VentasApi>();
 
-            var lstProdVentas = new List<MdlVentasDb>();
+            var lstProdVentas = new List<MdlVentas>();
             var lstVentas = new List<VentasApi>();
             var resp = new ApiRespuesta<VentasApi>();
 
@@ -66,7 +66,7 @@ namespace VentasCarrito.Controllers
         public IActionResult InsertarVenta([FromBody] VentasApi pRequest)
         {
             var InsercionDatos = new SrvVentasCarrito();
-            var DatosInsercion = new MdlVentasCrearDb();
+            var DatosInsercion = new MdlVentasCrear();
             var Resp = new MdlMensajeResp();
 
             try
@@ -98,7 +98,7 @@ namespace VentasCarrito.Controllers
         public IActionResult Actualizar([FromBody] VentasApi pRequest)
         {
             var ActalizacionVentas = new SrvVentasCarrito();
-            var VentasActualizacion = new MdlVentasDb();
+            var VentasActualizacion = new MdlVentasActualizar();
             var resp = new MdlMensajeResp();
 
 
@@ -134,7 +134,7 @@ namespace VentasCarrito.Controllers
         {
 
             var EliminarVentas = new SrvVentasCarrito();
-            var VentasEliminar = new MdlVentasDb();
+            var VentasEliminar = new MdlVentasEliminar();
             var Resp = new MdlMensajeResp();
 
             try
