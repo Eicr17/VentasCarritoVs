@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CarritosVentaLibrerira.Modelos
 {
-    public class MdlProductoDb
+    public class MdlProducto
     {
         public int Id_Producto { get; set; }
         public string Nombre_Producto { get; set; }

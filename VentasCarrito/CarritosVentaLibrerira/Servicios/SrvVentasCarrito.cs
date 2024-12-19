@@ -11,9 +11,9 @@ namespace CarritosVentaLibrerira.Servicios
 {
     public class SrvVentasCarrito
     {
-        public static List<MdlVentasDb> ObtenerVentas()
+        public static List<MdlVentas> ObtenerVentas()
         {
-            var lista = new List<MdlVentasDb>();
+            var lista = new List<MdlVentas>();
             SqlConnection cn = new SqlConnection("Data source=192.168.1.97; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10");
             cn.Open();
             SqlCommand cmd = new SqlCommand("Select * From VentasCarrito");
@@ -24,7 +24,7 @@ namespace CarritosVentaLibrerira.Servicios
             {
                 while (dr.Read())
                 {
-                    var item = new MdlVentasDb();
+                    var item = new MdlVentas();
                     item.IdProducto = int.Parse(dr.GetValue(0).ToString());
                     item.IdCliente = int.Parse(dr.GetValue(1).ToString());
                     item.IdVenta = int.Parse(dr.GetValue(2).ToString());
@@ -46,9 +46,9 @@ namespace CarritosVentaLibrerira.Servicios
             }
 
         }
+        
 
-
-        public void Insertar(MdlVentasCrearDb item)
+        public void Insertar(MdlVentasCrear item)
         {
             var cn = new SqlConnection("Data Source=192.168.1.97; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10");
             cn.Open();
@@ -74,7 +74,7 @@ namespace CarritosVentaLibrerira.Servicios
 
         }
 
-        public void Actualizar(MdlVentasDb Item) {
+        public void Actualizar(MdlVentasActualizar Item) {
 
             var cn = new SqlConnection("Data Source=192.168.1.97; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10");
             cn.Open();
@@ -102,7 +102,7 @@ namespace CarritosVentaLibrerira.Servicios
         }
 
 
-        public void Delete(MdlVentasDb Item) {
+        public void Delete(MdlVentasEliminar Item) {
 
             var cn = new SqlConnection("Data Source=192.168.1.97; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10;");
             cn.Open();
@@ -115,9 +115,7 @@ namespace CarritosVentaLibrerira.Servicios
             cmd.CommandText = sql;
             cmd.Parameters.Add("@IdVenta", SqlDbType.Int).Value = Item.IdVenta;
             cmd.Parameters.Add("@IdProducto", SqlDbType.Int).Value = Item.IdProducto;
-            cmd.Parameters.Add("@IdCliente", SqlDbType.Int).Value = Item.IdCliente;
-
-
+            cmd.Parameters.Add("@IdCliente", SqlDbType.Int).Value = Item.IdCliente;     
             cmd.ExecuteNonQuery();
 
             cn.Close();

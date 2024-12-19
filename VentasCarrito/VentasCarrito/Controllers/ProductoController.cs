@@ -15,7 +15,7 @@ namespace VentasCarrito.Controllers
         public IActionResult Get()
         {
             var Resp = new ApiRespuesta<ProductoApi>();
-            var lstProdProducto = new List<MdlProductoDb>();
+            var lstProdProducto = new List<MdlProducto>();
             var lstProducto = new List<ProductoApi>();
 
             try
@@ -60,7 +60,7 @@ namespace VentasCarrito.Controllers
         public IActionResult Crear([FromBody] ProductoApi Item)
         {
             var ProductoInsercion = new SrvProducto();
-            var InsercionProducto = new MdlCrearProductoDb();
+            var InsercionProducto = new MdlCrearProducto();
 
             try
             {
@@ -88,7 +88,7 @@ namespace VentasCarrito.Controllers
         public IActionResult Actualizar([FromBody] ProductoApi Item) 
         {
             var ProductoActualizacion = new SrvProducto();
-            var ActualizacionProducto = new MdlProductoDb();
+            var ActualizacionProducto = new MdlProductoActualizar();
 
             try
             {
@@ -97,7 +97,7 @@ namespace VentasCarrito.Controllers
                 ActualizacionProducto.Existencia = Item.existencia;
                 ActualizacionProducto.Marca = Item.marca;
                 ActualizacionProducto.Precio = Item.precio;
-                ProductoActualizacion.Actualziar(ActualizacionProducto);
+                ProductoActualizacion.Actualizar(ActualizacionProducto);
                 var resp = new MdlMensajeResp();
                 resp.mensaje_exitoso = "Actualizacion Exitosa";
                 return Ok(resp);
@@ -115,7 +115,7 @@ namespace VentasCarrito.Controllers
         public IActionResult Eliminar([FromBody] ProductoApi Item)
         {
             var ProductoEliminacion = new SrvProducto();
-            var EliminacionProducto = new MdlProductoDb();
+            var EliminacionProducto = new MdlProductoEliminar();
 
             try
             {

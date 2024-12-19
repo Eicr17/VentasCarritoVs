@@ -11,10 +11,10 @@ namespace CarritosVentaLibrerira.Servicios
 {
     public class SrvProducto
     {
-        public static List<MdlProductoDb> ObtenerProducto()
+        public static List<MdlProducto> ObtenerProducto()
         {
 
-            var lista = new List<MdlProductoDb>();
+            var lista = new List<MdlProducto>();
             SqlConnection cn = new SqlConnection("Data Source= 192.168.1.97; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10;");
             cn.Open();
             SqlCommand cmd = new SqlCommand("Select * From Producto");
@@ -27,7 +27,7 @@ namespace CarritosVentaLibrerira.Servicios
 
                 while (dr.Read())
                 {
-                    var item = new MdlProductoDb();
+                    var item = new MdlProducto();
                     item.Id_Producto = int.Parse(dr.GetValue(0).ToString());
                     item.Nombre_Producto = dr.GetValue(1).ToString();
                     item.Existencia = int.Parse(dr.GetValue(2).ToString());
@@ -45,7 +45,7 @@ namespace CarritosVentaLibrerira.Servicios
         }
 
 
-        public void Insertar(MdlCrearProductoDb item)
+        public void Insertar(MdlCrearProducto item)
         {
             var conn = new SqlConnection("Data Source=192.168.1.97; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10;");
             conn.Open();
@@ -68,7 +68,7 @@ namespace CarritosVentaLibrerira.Servicios
         }
 
 
-        public void Actualziar(MdlProductoDb Item)
+        public void Actualizar(MdlProductoActualizar Item)
         {
             var conn = new SqlConnection("Data Source=192.168.1.97; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10;");
             conn.Open();
@@ -91,7 +91,7 @@ namespace CarritosVentaLibrerira.Servicios
         }
 
 
-        public void Eliminar(MdlProductoDb Item)
+        public void Eliminar(MdlProductoEliminar Item)
         {
             var conn = new SqlConnection("Data Source=192.168.1.97; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10;");
             conn.Open();

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CarritosVentaLibrerira.Modelos
 {
-    public class MdlClienteCrearDb
+    public class MdlClienteCrear
     {
         public string Nombre { get; set; }
 
