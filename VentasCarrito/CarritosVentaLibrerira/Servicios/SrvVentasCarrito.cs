@@ -33,7 +33,6 @@ namespace CarritosVentaLibrerira.Servicios
                     item.CantidadProducto = int.Parse(dr.GetValue(5).ToString());
                     item.Fecha_Venta = DateTime.Parse(dr.GetValue(6).ToString());
                     item.Descuento = decimal.Parse(dr.GetValue(7).ToString());
-                    item.Existencia = int.Parse(dr.GetValue(8).ToString());
 
                     lista.Add(item);
 
@@ -53,8 +52,8 @@ namespace CarritosVentaLibrerira.Servicios
             var cn = new SqlConnection("Data Source=192.168.1.97; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10");
             cn.Open();
 
-            string sql = "Insert into VentasCarrito(id_producto,id_cliente,Establecimiento,Precio,Cantidad_Producto,Fecha_Venta,Descuento,Existencia)  " +
-                "Values(@id_producto,@id_cliente,@Establecimiento,@Precio,@Cantidad,@FechaVenta,@Descuento,@Existencia)";
+            string sql = "Insert into VentasCarrito(id_producto,id_cliente,Establecimiento,Precio,Cantidad_Producto,Fecha_Venta,Descuento)  " +
+                "Values(@id_producto,@id_cliente,@Establecimiento,@Precio,@Cantidad,@FechaVenta,@Descuento)";
 
             var cmd = new SqlCommand();
             cmd.Connection = cn;
@@ -66,7 +65,6 @@ namespace CarritosVentaLibrerira.Servicios
             cmd.Parameters.Add("@Cantidad", SqlDbType.Int).Value = item.CantidadProducto;
             cmd.Parameters.Add("@FechaVenta", SqlDbType.DateTime).Value = item.Fecha_Venta;
             cmd.Parameters.Add("@Descuento", SqlDbType.Decimal).Value = item.Descuento;
-            cmd.Parameters.Add("@Existencia", SqlDbType.Int).Value = item.Existencia;
             cmd.ExecuteNonQuery();
 
             cn.Close();
@@ -79,7 +77,7 @@ namespace CarritosVentaLibrerira.Servicios
             var cn = new SqlConnection("Data Source=192.168.1.97; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10");
             cn.Open();
 
-            string sql = "Update VentasCarrito set  Establecimiento = @Establecimiento,  Precio=@Precio, Cantidad_Producto=@Cantidad,  Descuento=@Descuento, Existencia = @Existencia  "  +
+            string sql = "Update VentasCarrito set  Establecimiento = @Establecimiento,  Precio=@Precio, Cantidad_Producto=@Cantidad,  Descuento=@Descuento  "  +
                 "Where Id_Venta= @IdVenta and Id_Cliente = @IdCliente and Id_Producto = @IdProducto";
 
             var cmd = new SqlCommand();
@@ -93,7 +91,6 @@ namespace CarritosVentaLibrerira.Servicios
             cmd.Parameters.Add("@Precio", SqlDbType.Decimal).Value = Item.Precio;
             cmd.Parameters.Add("@Cantidad", SqlDbType.Int).Value = Item.CantidadProducto;
             cmd.Parameters.Add("@Descuento", SqlDbType.Decimal).Value = Item.Descuento;
-            cmd.Parameters.Add("@Existencia", SqlDbType.Int).Value = Item.Existencia;
             cmd.ExecuteNonQuery();
 
             cn.Close();

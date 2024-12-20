@@ -31,7 +31,8 @@ namespace VentasCarrito.Controllers
                                 id_producto = prod.Id_Producto,
                                 nombre_producto  =  prod.Nombre_Producto,
                                 marca = prod.Marca,
-                                precio = prod.Precio
+                                precio = prod.Precio,
+                                Existencia = prod.Existencia
 
 
                           });
@@ -65,6 +66,7 @@ namespace VentasCarrito.Controllers
                 InsercionProducto.Nombre_Producto = Item.nombre_producto;
                 InsercionProducto.Marca = Item.marca;
                 InsercionProducto.Precio = Item.precio;
+                InsercionProducto.Existencia = Item.Existencia;
                 ProductoInsercion.Insertar(InsercionProducto);
                 var resp = new MdlMensajeResp();
                 resp.mensaje_exitoso = "Insercion Exitosa";
@@ -93,6 +95,7 @@ namespace VentasCarrito.Controllers
                 ActualizacionProducto.Nombre_Producto = Item.nombre_producto;
                 ActualizacionProducto.Marca = Item.marca;
                 ActualizacionProducto.Precio = Item.precio;
+                ActualizacionProducto.Existencia = Item.Existencia;
                 ProductoActualizacion.Actualizar(ActualizacionProducto);
                 var resp = new MdlMensajeResp();
                 resp.mensaje_exitoso = "Actualizacion Exitosa";
