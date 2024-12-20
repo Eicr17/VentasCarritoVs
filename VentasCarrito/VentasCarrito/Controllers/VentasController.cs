@@ -16,11 +16,11 @@ namespace VentasCarrito.Controllers
         public IActionResult Get()
         {
 
-            var respuesta = new ApiRespuesta<VentasApi>();
+            var respuesta = new ApiRespuestaListado<VentasApi>();
 
             var lstProdVentas = new List<MdlVentas>();
             var lstVentas = new List<VentasApi>();
-            var resp = new ApiRespuesta<VentasApi>();
+            var resp = new ApiRespuestaListado<VentasApi>();
 
 
             try
@@ -47,8 +47,7 @@ namespace VentasCarrito.Controllers
                     }
                     );
                 resp.datos = lstVentas;
-                resp.codigo_operacion = 0;
-                resp.mensaje_error = string.Empty;
+                resp.mensaje = string.Empty;
                 resp.total_registros = lstProdVentas.Count;
                 return Ok(resp);
             }
@@ -76,6 +75,7 @@ namespace VentasCarrito.Controllers
                 DatosInsercion.Id_Cliente = pRequest.id_cliente;
                 DatosInsercion.Establecimiento = pRequest.establecimiento;
                 DatosInsercion.Precio = pRequest.precio;
+                DatosInsercion.CantidadProducto = pRequest.cantidad_producto;
                 DatosInsercion.Fecha_Venta = pRequest.fecha_venta;
                 DatosInsercion.Descuento = pRequest.descuento;
                 DatosInsercion.Existencia = pRequest.existencia;
@@ -130,24 +130,23 @@ namespace VentasCarrito.Controllers
         }
 
 
-        [HttpPost]
-        [Route("Eliminar")]
+        [HttpPut]
+        [Route("Eliminar/{pId}")]
 
-        public IActionResult Delete([FromBody] VentasApi pRequest)
+        public IActionResult Delete( int pId)
         {
 
             var EliminarVentas = new SrvVentasCarrito();
             var VentasEliminar = new MdlVentasEliminar();
-            var Resp = new MdlMensajeResp();
+            var Resp = new ApiRespuesta();
 
             try
             {
-                VentasEliminar.IdVenta = pRequest.id_venta;
-                VentasEliminar.IdProducto = pRequest.id_producto;
-                VentasEliminar.IdCliente = pRequest.id_venta;
-
+                VentasEliminar.IdVenta = pId;                
                 EliminarVentas.Delete(VentasEliminar);
-                Resp.mensaje_exitoso = "La Eliminacion a sido Exitosa";
+                Resp.exitosa = true;
+                Resp.mensaje = "El registro ha sido eliminado";
+                
                 return Ok(Resp);
             }
             catch (Exception ex)

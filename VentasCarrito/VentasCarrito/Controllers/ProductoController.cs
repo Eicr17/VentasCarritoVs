@@ -14,7 +14,7 @@ namespace VentasCarrito.Controllers
         [Route("Obtener")]
         public IActionResult Get()
         {
-            var Resp = new ApiRespuesta<ProductoApi>();
+            var Resp = new ApiRespuestaListado<ProductoApi>();
             var lstProdProducto = new List<MdlProducto>();
             var lstProducto = new List<ProductoApi>();
 
@@ -30,7 +30,6 @@ namespace VentasCarrito.Controllers
                             {
                                 id_producto = prod.Id_Producto,
                                 nombre_producto  =  prod.Nombre_Producto,
-                                existencia = prod.Existencia,
                                 marca = prod.Marca,
                                 precio = prod.Precio
 
@@ -40,9 +39,8 @@ namespace VentasCarrito.Controllers
                                                   
                    }
                     );
-                Resp.datos = lstProducto;
-                Resp.codigo_operacion = 0;
-                Resp.mensaje_error = string.Empty;
+                Resp.datos = lstProducto;                
+                Resp.mensaje = string.Empty;
                 Resp.total_registros = lstProdProducto.Count;
                 return Ok(Resp);
             }
@@ -65,7 +63,6 @@ namespace VentasCarrito.Controllers
             try
             {
                 InsercionProducto.Nombre_Producto = Item.nombre_producto;
-                InsercionProducto.Existencia = Item.existencia;
                 InsercionProducto.Marca = Item.marca;
                 InsercionProducto.Precio = Item.precio;
                 ProductoInsercion.Insertar(InsercionProducto);
@@ -94,7 +91,6 @@ namespace VentasCarrito.Controllers
             {
                 ActualizacionProducto.Id_Producto = Item.id_producto;
                 ActualizacionProducto.Nombre_Producto = Item.nombre_producto;
-                ActualizacionProducto.Existencia = Item.existencia;
                 ActualizacionProducto.Marca = Item.marca;
                 ActualizacionProducto.Precio = Item.precio;
                 ProductoActualizacion.Actualizar(ActualizacionProducto);
@@ -111,19 +107,21 @@ namespace VentasCarrito.Controllers
         
         }
         [HttpPost]
-        [Route("Eliminar")]
-        public IActionResult Eliminar([FromBody] ProductoApi Item)
+        [Route("Eliminar/{pId}")]
+        public IActionResult Eliminar(int pId)
         {
             var ProductoEliminacion = new SrvProducto();
             var EliminacionProducto = new MdlProductoEliminar();
+            var Resp = new ApiRespuesta();
+
 
             try
             {
-                EliminacionProducto.Id_Producto = Item.id_producto;
+                EliminacionProducto.Id_Producto = pId;
                 ProductoEliminacion.Eliminar(EliminacionProducto);
-                var resp = new MdlMensajeResp();
-                resp.mensaje_exitoso = "Eliminacion Exitosa";
-                return Ok(resp);
+                Resp.exitosa = true;
+                Resp.mensaje = "El registro ha sido eliminado";
+                return Ok(Resp);
             }
             catch (Exception ex )
             {
