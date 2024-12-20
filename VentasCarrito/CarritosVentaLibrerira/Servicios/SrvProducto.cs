@@ -30,9 +30,8 @@ namespace CarritosVentaLibrerira.Servicios
                     var item = new MdlProducto();
                     item.Id_Producto = int.Parse(dr.GetValue(0).ToString());
                     item.Nombre_Producto = dr.GetValue(1).ToString();
-                    item.Existencia = int.Parse(dr.GetValue(2).ToString());
-                    item.Marca = dr.GetValue(3).ToString();
-                    item.Precio = double.Parse(dr.GetValue(4).ToString());
+                    item.Marca = dr.GetValue(2).ToString();
+                    item.Precio = double.Parse(dr.GetValue(3).ToString());
                     lista.Add(item);
 
 
@@ -50,14 +49,13 @@ namespace CarritosVentaLibrerira.Servicios
             var conn = new SqlConnection("Data Source=192.168.1.97; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10;");
             conn.Open();
 
-            string sql = "Insert into Producto(Nombre_Producto,Existencia,Marca,Precio)  " +
-                "Values(@nombre,@existencia,@marca,@precio)";
+            string sql = "Insert into Producto(Nombre_Producto,Marca,Precio)  " +
+                "Values(@nombre,@marca,@precio)";
 
             var cmd = new SqlCommand();
             cmd.Connection = conn;
             cmd.CommandText = sql;
             cmd.Parameters.Add("@nombre", SqlDbType.VarChar).Value = item.Nombre_Producto;
-            cmd.Parameters.Add("@existencia", SqlDbType.Int).Value = item.Existencia;
             cmd.Parameters.Add("@marca", SqlDbType.VarChar).Value = item.Marca;
             cmd.Parameters.Add("@Precio", SqlDbType.Decimal).Value = item.Precio;
             cmd.ExecuteNonQuery();
@@ -81,7 +79,6 @@ namespace CarritosVentaLibrerira.Servicios
             cmd.CommandText = sql;
             cmd.Parameters.Add("@IdProducto", SqlDbType.VarChar).Value = Item.Id_Producto;
             cmd.Parameters.Add("@nombre", SqlDbType.VarChar).Value = Item.Nombre_Producto;
-            cmd.Parameters.Add("@existencia", SqlDbType.Int).Value = Item.Existencia;
             cmd.Parameters.Add("@marca", SqlDbType.VarChar).Value = Item.Marca;
             cmd.Parameters.Add("@precio", SqlDbType.Decimal).Value = Item.Precio;
             cmd.ExecuteNonQuery();

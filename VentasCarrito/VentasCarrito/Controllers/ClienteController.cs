@@ -15,7 +15,7 @@ namespace VentasCarrito.Controllers
         [Route("Obtener")]
         public IActionResult Get( )
         {
-            var respuesta = new ApiRespuesta<ClienteApi>();
+            var respuesta = new ApiRespuestaListado<ClienteApi>();
             var lstProdCliente = new List<MdlCliente>();
             var lstCliente = new List<ClienteApi>();
 
@@ -40,9 +40,8 @@ namespace VentasCarrito.Controllers
 
                     });
 
-                respuesta.datos = lstCliente;
-                respuesta.codigo_operacion = 0;
-                respuesta.mensaje_error = string.Empty;
+                respuesta.datos = lstCliente;                
+                respuesta.mensaje = string.Empty;
                 respuesta.total_registros = lstProdCliente.Count;
 
                 return Ok(respuesta);
@@ -115,20 +114,21 @@ namespace VentasCarrito.Controllers
 
         
 
-        [HttpPost]
-        [Route("Eliminar")]
-        public IActionResult Delete([FromBody] ClienteApi pRequest) 
+        [HttpPut]
+        [Route("Eliminar/{pId}")]
+        public IActionResult Delete( int pId) 
         {
             var ClienteEliminacion = new SrvCliente();
             var EliminacionCliente = new MdlClienteEliminar();
+            var Resp = new ApiRespuesta();
 
             try
             {
-                EliminacionCliente.Id_Cliente = pRequest.id_cliente;
+                EliminacionCliente.Id_Cliente = pId;
                 ClienteEliminacion.Eliminar(EliminacionCliente);
-                var resp = new MdlMensajeResp();
-                resp.mensaje_exitoso = "La Eliminacion a sido exitosa";
-                return Ok(resp);
+                Resp.exitosa = true;
+                Resp.mensaje = "El registro ha sido eliminado";
+                return Ok(Resp);
             }
             catch (Exception ex)
             {

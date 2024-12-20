@@ -79,7 +79,7 @@ namespace CarritosVentaLibrerira.Servicios
             var cn = new SqlConnection("Data Source=192.168.1.97; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10");
             cn.Open();
 
-            string sql = "Update VentasCarrito set  Establecimiento = @Establecimiento,  Precio=@Precio, Cantidad_Producto=@Cantidad,  Descuento=@Descuento " +
+            string sql = "Update VentasCarrito set  Establecimiento = @Establecimiento,  Precio=@Precio, Cantidad_Producto=@Cantidad,  Descuento=@Descuento, Existencia = @Existencia  "  +
                 "Where Id_Venta= @IdVenta and Id_Cliente = @IdCliente and Id_Producto = @IdProducto";
 
             var cmd = new SqlCommand();
@@ -108,14 +108,12 @@ namespace CarritosVentaLibrerira.Servicios
             cn.Open();
 
             string sql = "Delete from VentasCarrito " +
-                "Where Id_Venta = @IdVenta AND Id_Producto = @IdProducto AND Id_Cliente = @IdCliente";
+                "Where Id_Venta = @IdVenta";
 
             var cmd = new SqlCommand();
             cmd.Connection = cn;
             cmd.CommandText = sql;
             cmd.Parameters.Add("@IdVenta", SqlDbType.Int).Value = Item.IdVenta;
-            cmd.Parameters.Add("@IdProducto", SqlDbType.Int).Value = Item.IdProducto;
-            cmd.Parameters.Add("@IdCliente", SqlDbType.Int).Value = Item.IdCliente;     
             cmd.ExecuteNonQuery();
 
             cn.Close();
