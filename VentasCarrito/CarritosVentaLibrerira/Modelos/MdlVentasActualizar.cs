@@ -16,7 +16,6 @@ namespace CarritosVentaLibrerira.Modelos
         public int CantidadProducto { get; set; }
         public DateTime Fecha_Venta { get; set; }
         public decimal Descuento { get; set; }
-        public int Existencia { get; set; }
 
 
     }

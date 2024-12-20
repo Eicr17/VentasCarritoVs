@@ -41,7 +41,6 @@ namespace VentasCarrito.Controllers
                                 cantidad_producto = vent.CantidadProducto,
                                 fecha_venta =  vent.Fecha_Venta,
                                 descuento = vent.Descuento,
-                                existencia = vent.Existencia
                             }
                             ); 
                     }
@@ -78,7 +77,6 @@ namespace VentasCarrito.Controllers
                 DatosInsercion.CantidadProducto = pRequest.cantidad_producto;
                 DatosInsercion.Fecha_Venta = pRequest.fecha_venta;
                 DatosInsercion.Descuento = pRequest.descuento;
-                DatosInsercion.Existencia = pRequest.existencia;
                 InsercionDatos.Insertar(DatosInsercion);
                 var resp = new MdlMensajeResp();
                 resp.mensaje_exitoso = "Insercion Exitosa";
@@ -114,7 +112,6 @@ namespace VentasCarrito.Controllers
                 VentasActualizacion.CantidadProducto = pRequest.cantidad_producto;
                 VentasActualizacion.Fecha_Venta = pRequest.fecha_venta;
                 VentasActualizacion.Descuento = pRequest.descuento;
-                VentasActualizacion.Existencia = pRequest.existencia;
                 ActalizacionVentas.Actualizar(VentasActualizacion);
                 resp.mensaje_exitoso = "La Actualizacion a sido Exitosa";
                 return Ok(resp);

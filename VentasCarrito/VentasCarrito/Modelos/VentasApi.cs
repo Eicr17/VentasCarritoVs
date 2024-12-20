@@ -10,7 +10,6 @@
         public int cantidad_producto { get; set; }
         public DateTime fecha_venta { get; set; }
         public decimal descuento { get; set; }
-        public int existencia { get; set; }
 
     }
 }
