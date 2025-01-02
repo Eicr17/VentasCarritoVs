@@ -60,7 +60,7 @@ namespace VentasCarrito.Controllers
         }
 
         [HttpPost]
-        [Route("Insertar")]
+        [Route("Crear")]
 
         public IActionResult InsertarVenta([FromBody] VentasApi pRequest)
         {
@@ -130,7 +130,7 @@ namespace VentasCarrito.Controllers
         [HttpPut]
         [Route("Eliminar/{pId}")]
 
-        public IActionResult Delete( int pId)
+        public IActionResult Delete(int pId)
         {
 
             var EliminarVentas = new SrvVentasCarrito();
@@ -139,7 +139,7 @@ namespace VentasCarrito.Controllers
 
             try
             {
-                VentasEliminar.IdVenta = pId;                
+                VentasEliminar.Id_Venta = pId;                
                 EliminarVentas.Delete(VentasEliminar);
                 Resp.exitosa = true;
                 Resp.mensaje = "El registro ha sido eliminado";
@@ -157,3 +157,4 @@ namespace VentasCarrito.Controllers
 
     }
 }
+    

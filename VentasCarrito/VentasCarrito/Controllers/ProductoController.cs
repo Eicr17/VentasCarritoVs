@@ -109,7 +109,7 @@ namespace VentasCarrito.Controllers
         
         
         }
-        [HttpPost]
+        [HttpPut]
         [Route("Eliminar/{pId}")]
         public IActionResult Eliminar(int pId)
         {
