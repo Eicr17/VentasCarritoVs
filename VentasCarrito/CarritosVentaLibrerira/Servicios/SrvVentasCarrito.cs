@@ -1,4 +1,4 @@
-﻿    using CarritosVentaLibrerira.Modelos;
+﻿using CarritosVentaLibrerira.Modelos;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -104,13 +104,13 @@ namespace CarritosVentaLibrerira.Servicios
             var cn = new SqlConnection("Data Source=192.168.1.97; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10;");
             cn.Open();
 
-            string sql = "Delete from VentasCarrito " +
+            string sql = "Delete From VentasCarrito " +
                 "Where Id_Venta = @IdVenta";
 
             var cmd = new SqlCommand();
             cmd.Connection = cn;
             cmd.CommandText = sql;
-            cmd.Parameters.Add("@IdVenta", SqlDbType.Int).Value = Item.IdVenta;
+            cmd.Parameters.Add("@IdVenta", SqlDbType.Int).Value = Item.Id_Venta;
             cmd.ExecuteNonQuery();
 
             cn.Close();
@@ -118,3 +118,4 @@ namespace CarritosVentaLibrerira.Servicios
         }
     }
 }
+    

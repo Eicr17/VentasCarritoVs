@@ -8,6 +8,6 @@ namespace CarritosVentaLibrerira.Modelos
 {
     public class MdlVentasEliminar
     {
-        public int IdVenta { get; set; }
+        public int Id_Venta { get; set; }
     }
 }
