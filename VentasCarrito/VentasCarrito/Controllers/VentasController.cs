@@ -74,8 +74,7 @@ namespace VentasCarrito.Controllers
                 DatosInsercion.Id_Cliente = pRequest.id_cliente;
                 DatosInsercion.Establecimiento = pRequest.establecimiento;
                 DatosInsercion.Precio = pRequest.precio;
-                DatosInsercion.CantidadProducto = pRequest.cantidad_producto;
-                DatosInsercion.Fecha_Venta = pRequest.fecha_venta;
+                DatosInsercion.Cantidad_Producto = pRequest.cantidad_producto;
                 DatosInsercion.Descuento = pRequest.descuento;
                 InsercionDatos.Insertar(DatosInsercion);
                 var resp = new MdlMensajeResp();

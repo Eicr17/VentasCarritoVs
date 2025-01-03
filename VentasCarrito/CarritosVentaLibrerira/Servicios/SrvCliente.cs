@@ -54,7 +54,7 @@ namespace CarritosVentaLibrerira.Servicios
             conn.Open();
 
             string sql = "INSERT INTO Cliente(nombre, apellido, dpi, telefono, totalventas) " +
-           "VALUES (@nombre, @apellido, @dpi, @telefono, @totalventas)";
+           "VALUES (@nombre, @apellido, @dpi, @telefono,)";
 
 
             var cmd = new SqlCommand();
@@ -64,7 +64,6 @@ namespace CarritosVentaLibrerira.Servicios
             cmd.Parameters.Add("@apellido", SqlDbType.VarChar).Value = item.Apellido;
             cmd.Parameters.Add("@dpi", SqlDbType.VarChar).Value = item.Dpi;
             cmd.Parameters.Add("@telefono", SqlDbType.VarChar).Value = item.Telefono;
-            cmd.Parameters.Add("@totalventas", SqlDbType.Decimal).Value = item.TotalVentas;
             cmd.ExecuteNonQuery();
 
 
@@ -90,7 +89,6 @@ namespace CarritosVentaLibrerira.Servicios
             cmd.Parameters.Add("@Apellido", SqlDbType.VarChar).Value = item.Apellido;
             cmd.Parameters.Add("@Dpi", SqlDbType.VarChar).Value = item.Dpi;
             cmd.Parameters.Add("@Telefono", SqlDbType.VarChar).Value = item.Telefono;
-            cmd.Parameters.Add("@Totalventas", SqlDbType.Decimal).Value = item.TotalVentas;
             cmd.ExecuteNonQuery();
 
 
