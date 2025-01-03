@@ -70,7 +70,6 @@ namespace VentasCarrito.Controllers
                 InsercionCliente.Apellido = pRequest.apellido;
                 InsercionCliente.Dpi = pRequest.dpi;
                 InsercionCliente.Telefono = pRequest.telefono;
-                InsercionCliente.TotalVentas = pRequest.totalventas;
                 ClienteInsercion.Insertar(InsercionCliente);
                 var resp = new MdlMensajeResp();
                 resp.mensaje_exitoso = "La insercion a sido exitosa";
@@ -98,7 +97,6 @@ namespace VentasCarrito.Controllers
                 ActualizacionCliente.Apellido = pRequest.apellido;
                 ActualizacionCliente.Dpi = pRequest.dpi;
                 ActualizacionCliente.Telefono = pRequest.telefono;
-                ActualizacionCliente.TotalVentas = pRequest.totalventas;
                 ClienteActualizacion.Actualizar(ActualizacionCliente);
                 var resp = new MdlMensajeResp();
                 resp.mensaje_exitoso = "La Actualizacion a sido exitosa";

@@ -52,8 +52,8 @@ namespace CarritosVentaLibrerira.Servicios
             var cn = new SqlConnection("Data Source=192.168.1.97; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10");
             cn.Open();
 
-            string sql = "Insert into VentasCarrito(id_producto,id_cliente,Establecimiento,Precio,Cantidad_Producto,Fecha_Venta,Descuento)  " +
-                "Values(@id_producto,@id_cliente,@Establecimiento,@Precio,@Cantidad,@FechaVenta,@Descuento)";
+            string sql = "Insert into VentasCarrito(id_producto,id_cliente,Establecimiento,Precio,Cantidad_Producto,Descuento)  " +
+                "Values(@id_producto,@id_cliente,@Establecimiento,@Precio,@Cantidad,@Descuento)";
 
             var cmd = new SqlCommand();
             cmd.Connection = cn;
@@ -62,8 +62,7 @@ namespace CarritosVentaLibrerira.Servicios
             cmd.Parameters.Add("@id_cliente", SqlDbType.VarChar).Value = item.Id_Cliente;
             cmd.Parameters.Add("@Establecimiento", SqlDbType.VarChar).Value = item.Establecimiento;
             cmd.Parameters.Add("@Precio", SqlDbType.Decimal).Value = item.Precio;   
-            cmd.Parameters.Add("@Cantidad", SqlDbType.Int).Value = item.CantidadProducto;
-            cmd.Parameters.Add("@FechaVenta", SqlDbType.DateTime).Value = item.Fecha_Venta;
+            cmd.Parameters.Add("@Cantidad", SqlDbType.Int).Value = item.Cantidad_Producto;
             cmd.Parameters.Add("@Descuento", SqlDbType.Decimal).Value = item.Descuento;
             cmd.ExecuteNonQuery();
 
@@ -78,15 +77,13 @@ namespace CarritosVentaLibrerira.Servicios
             cn.Open();
 
             string sql = "Update VentasCarrito set  Establecimiento = @Establecimiento,  Precio=@Precio, Cantidad_Producto=@Cantidad,  Descuento=@Descuento  "  +
-                "Where Id_Venta= @IdVenta and Id_Cliente = @IdCliente and Id_Producto = @IdProducto";
+                "Where Id_Venta= @IdVenta";
 
             var cmd = new SqlCommand();
             cmd.Connection = cn;
             cmd.CommandText = sql;
 
             cmd.Parameters.Add("@IdVenta", SqlDbType.Int).Value = Item.IdVenta;
-            cmd.Parameters.Add("@IdCliente", SqlDbType.Int).Value = Item.IdCliente;
-            cmd.Parameters.Add("@IdProducto", SqlDbType.Int).Value = Item.IdProducto;
             cmd.Parameters.Add("@Establecimiento", SqlDbType.VarChar).Value = Item.Establecimiento;
             cmd.Parameters.Add("@Precio", SqlDbType.Decimal).Value = Item.Precio;
             cmd.Parameters.Add("@Cantidad", SqlDbType.Int).Value = Item.CantidadProducto;
