@@ -73,7 +73,7 @@ namespace CarritosVentaLibrerira.Servicios
             var conn = new SqlConnection("Data Source=192.168.1.97; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10;");
             conn.Open();
 
-            string sql = "Update Producto set   Nombre_Producto=@nombre, Existencia=@existencia, Marca=@marca, Precio=@Precio, Existencia = @existencia " +
+            string sql = "Update Producto set   Nombre_Producto=@nombre, Marca=@marca, Precio=@Precio, Existencia = @existencia " +
                 "Where Id_Producto=@IdProducto";
 
             var cmd = new SqlCommand();
@@ -83,7 +83,7 @@ namespace CarritosVentaLibrerira.Servicios
             cmd.Parameters.Add("@nombre", SqlDbType.VarChar).Value = Item.Nombre_Producto;
             cmd.Parameters.Add("@marca", SqlDbType.VarChar).Value = Item.Marca;
             cmd.Parameters.Add("@precio", SqlDbType.Decimal).Value = Item.Precio;
-            cmd.Parameters.Add("@existenci", SqlDbType.Decimal).Value = Item.Existencia;
+            cmd.Parameters.Add("@existencia", SqlDbType.Decimal).Value = Item.Existencia;
 
             cmd.ExecuteNonQuery();
 
