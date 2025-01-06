@@ -14,7 +14,7 @@ namespace CarritosVentaLibrerira.Servicios
         public static List<MdlVentas> ObtenerVentas()
         {
             var lista = new List<MdlVentas>();
-            SqlConnection cn = new SqlConnection("Data source=192.168.1.97; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10");
+            SqlConnection cn = new SqlConnection("Data source=192.168.1.98; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10");
             cn.Open();
             SqlCommand cmd = new SqlCommand("Select * From VentasCarrito");
             cmd.Connection = cn;
@@ -49,7 +49,7 @@ namespace CarritosVentaLibrerira.Servicios
 
         public void Insertar(MdlVentasCrear item)
         {
-            var cn = new SqlConnection("Data Source=192.168.1.97; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10");
+            var cn = new SqlConnection("Data Source=192.168.1.98; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10");
             cn.Open();
 
             string sql = "Insert into VentasCarrito(id_producto,id_cliente,Establecimiento,Precio,Cantidad_Producto,Descuento)  " +
@@ -73,7 +73,7 @@ namespace CarritosVentaLibrerira.Servicios
 
         public void Actualizar(MdlVentasActualizar Item) {
 
-            var cn = new SqlConnection("Data Source=192.168.1.97; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10");
+            var cn = new SqlConnection("Data Source=192.168.1.98; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10");
             cn.Open();
 
             string sql = "Update VentasCarrito set  Establecimiento = @Establecimiento,  Precio=@Precio, Cantidad_Producto=@Cantidad,  Descuento=@Descuento  "  +
@@ -98,7 +98,7 @@ namespace CarritosVentaLibrerira.Servicios
 
         public void Delete(MdlVentasEliminar Item) {
 
-            var cn = new SqlConnection("Data Source=192.168.1.97; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10;");
+            var cn = new SqlConnection("Data Source=192.168.1.98; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10;");
             cn.Open();
 
             string sql = "Delete From VentasCarrito " +

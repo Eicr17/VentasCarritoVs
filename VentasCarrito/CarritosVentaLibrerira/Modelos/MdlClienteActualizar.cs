@@ -17,6 +17,5 @@ namespace CarritosVentaLibrerira.Modelos
 
         public string Telefono { get; set; }
 
-        public double TotalVentas { get; set; }
     }
 }

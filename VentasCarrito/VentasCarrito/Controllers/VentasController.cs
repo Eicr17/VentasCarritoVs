@@ -64,19 +64,19 @@ namespace VentasCarrito.Controllers
 
         public IActionResult InsertarVenta([FromBody] VentasApi pRequest)
         {
-            var InsercionDatos = new SrvVentasCarrito();
-            var DatosInsercion = new MdlVentasCrear();
+            var SrvVentasCrear = new SrvVentasCarrito();
+            var MdVentasCrear = new MdlVentasCrear();
             var Resp = new MdlMensajeResp();
 
             try
             {
-                DatosInsercion.Id_Producto = pRequest.id_producto;
-                DatosInsercion.Id_Cliente = pRequest.id_cliente;
-                DatosInsercion.Establecimiento = pRequest.establecimiento;
-                DatosInsercion.Precio = pRequest.precio;
-                DatosInsercion.Cantidad_Producto = pRequest.cantidad_producto;
-                DatosInsercion.Descuento = pRequest.descuento;
-                InsercionDatos.Insertar(DatosInsercion);
+                MdVentasCrear.Id_Producto = pRequest.id_producto;
+                MdVentasCrear.Id_Cliente = pRequest.id_cliente;
+                MdVentasCrear.Establecimiento = pRequest.establecimiento;
+                MdVentasCrear.Precio = pRequest.precio;
+                MdVentasCrear.Cantidad_Producto = pRequest.cantidad_producto;
+                MdVentasCrear.Descuento = pRequest.descuento;
+                SrvVentasCrear.Insertar(MdVentasCrear);
                 var resp = new MdlMensajeResp();
                 resp.mensaje_exitoso = "Insercion Exitosa";
                 return Ok(resp);
@@ -96,22 +96,22 @@ namespace VentasCarrito.Controllers
 
         public IActionResult Actualizar([FromBody] VentasApi pRequest)
         {
-            var ActalizacionVentas = new SrvVentasCarrito();
-            var VentasActualizacion = new MdlVentasActualizar();
+            var SrvVentasActualizar = new SrvVentasCarrito();
+            var MdVentasActualizar = new MdlVentasActualizar();
             var resp = new MdlMensajeResp();
 
 
             try
             {
-                VentasActualizacion.IdProducto = pRequest.id_producto;
-                VentasActualizacion.IdCliente = pRequest.id_cliente;
-                VentasActualizacion.IdVenta = pRequest.id_venta;    
-                VentasActualizacion.Establecimiento = pRequest.establecimiento;
-                VentasActualizacion.Precio = pRequest.precio;
-                VentasActualizacion.CantidadProducto = pRequest.cantidad_producto;
-                VentasActualizacion.Fecha_Venta = pRequest.fecha_venta;
-                VentasActualizacion.Descuento = pRequest.descuento;
-                ActalizacionVentas.Actualizar(VentasActualizacion);
+                MdVentasActualizar.IdProducto = pRequest.id_producto;
+                MdVentasActualizar.IdCliente = pRequest.id_cliente;
+                MdVentasActualizar.IdVenta = pRequest.id_venta;
+                MdVentasActualizar.Establecimiento = pRequest.establecimiento;
+                MdVentasActualizar.Precio = pRequest.precio;
+                MdVentasActualizar.CantidadProducto = pRequest.cantidad_producto;
+                MdVentasActualizar.Fecha_Venta = pRequest.fecha_venta;
+                MdVentasActualizar.Descuento = pRequest.descuento;
+                SrvVentasActualizar.Actualizar(MdVentasActualizar);
                 resp.mensaje_exitoso = "La Actualizacion a sido Exitosa";
                 return Ok(resp);
 
@@ -132,14 +132,14 @@ namespace VentasCarrito.Controllers
         public IActionResult Delete(int pId)
         {
 
-            var EliminarVentas = new SrvVentasCarrito();
-            var VentasEliminar = new MdlVentasEliminar();
+            var SrvVentasEliminacion = new SrvVentasCarrito();
+            var MdVentasEliminar = new MdlVentasEliminar();
             var Resp = new ApiRespuesta();
 
             try
             {
-                VentasEliminar.Id_Venta = pId;                
-                EliminarVentas.Delete(VentasEliminar);
+                MdVentasEliminar.Id_Venta = pId;
+                SrvVentasEliminacion.Delete(MdVentasEliminar);
                 Resp.exitosa = true;
                 Resp.mensaje = "El registro ha sido eliminado";
                 
