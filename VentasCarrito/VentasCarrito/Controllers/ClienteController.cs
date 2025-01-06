@@ -116,14 +116,12 @@ namespace VentasCarrito.Controllers
         [Route("Eliminar/{pId}")]
         public IActionResult Delete( int pId) 
         {
-            var ClienteEliminacion = new SrvCliente();
-            var EliminacionCliente = new MdlClienteEliminar();
+            var srvCliente = new SrvCliente();            
             var Resp = new ApiRespuesta();
 
             try
             {
-                EliminacionCliente.Id_Cliente = pId;
-                ClienteEliminacion.Eliminar(EliminacionCliente);
+                srvCliente.Eliminar(pId);
                 Resp.exitosa = true;
                 Resp.mensaje = "El registro ha sido eliminado";
                 return Ok(Resp);

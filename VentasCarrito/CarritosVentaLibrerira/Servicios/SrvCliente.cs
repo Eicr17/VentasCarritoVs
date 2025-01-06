@@ -96,7 +96,7 @@ namespace CarritosVentaLibrerira.Servicios
             conn.Close();
         }
 
-        public void Eliminar(MdlClienteEliminar item)
+        public void Eliminar(int pId)
         {
             var conn = new SqlConnection("Data Source=192.168.1.97; Initial Catalog=dbCarritoCompras; User=sa; Password= Admin10;");
             conn.Open();
@@ -108,7 +108,7 @@ namespace CarritosVentaLibrerira.Servicios
             var cmd = new SqlCommand();
             cmd.Connection = conn;
             cmd.CommandText = sql;
-            cmd.Parameters.Add("@Id_Cliente", SqlDbType.Int).Value = item.Id_Cliente;
+            cmd.Parameters.Add("@Id_Cliente", SqlDbType.Int).Value = pId;
             cmd.ExecuteNonQuery();
 
             conn.Dispose();
