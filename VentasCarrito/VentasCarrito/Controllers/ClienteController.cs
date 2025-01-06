@@ -62,15 +62,15 @@ namespace VentasCarrito.Controllers
         {
 
 
-            var ClienteInsercion = new SrvCliente();
-            var InsercionCliente = new MdlClienteCrear();
+            var SrvCliente = new SrvCliente();
+            var MdClienteCreacion = new MdlClienteCrear();
             try
             {
-                InsercionCliente.Nombre = pRequest.nombre;
-                InsercionCliente.Apellido = pRequest.apellido;
-                InsercionCliente.Dpi = pRequest.dpi;
-                InsercionCliente.Telefono = pRequest.telefono;
-                ClienteInsercion.Insertar(InsercionCliente);
+                MdClienteCreacion.Nombre = pRequest.nombre;
+                MdClienteCreacion.Apellido = pRequest.apellido;
+                MdClienteCreacion.Dpi = pRequest.dpi;
+                MdClienteCreacion.Telefono = pRequest.telefono;
+                SrvCliente.Insertar(MdClienteCreacion);
                 var resp = new MdlMensajeResp();
                 resp.mensaje_exitoso = "La insercion a sido exitosa";
                 return Ok(resp);
@@ -87,17 +87,17 @@ namespace VentasCarrito.Controllers
 
         public IActionResult Actualizar([FromBody] ClienteApi pRequest) 
         {
-            var ClienteActualizacion =  new SrvCliente();
-            var ActualizacionCliente = new MdlClienteActualizar();
+            var SrvClienteActualizacion =  new SrvCliente();
+            var MdClientaActualizar = new MdlClienteActualizar();
 
             try
             {
-                ActualizacionCliente.Id_Cliente = pRequest.id_cliente;
-                ActualizacionCliente.Nombre = pRequest.nombre;
-                ActualizacionCliente.Apellido = pRequest.apellido;
-                ActualizacionCliente.Dpi = pRequest.dpi;
-                ActualizacionCliente.Telefono = pRequest.telefono;
-                ClienteActualizacion.Actualizar(ActualizacionCliente);
+                MdClientaActualizar.Id_Cliente = pRequest.id_cliente;
+                MdClientaActualizar.Nombre = pRequest.nombre;
+                MdClientaActualizar.Apellido = pRequest.apellido;
+                MdClientaActualizar.Dpi = pRequest.dpi;
+                MdClientaActualizar.Telefono = pRequest.telefono;
+                SrvClienteActualizacion.Actualizar(MdClientaActualizar);
                 var resp = new MdlMensajeResp();
                 resp.mensaje_exitoso = "La Actualizacion a sido exitosa";
                 return Ok(resp);
@@ -114,16 +114,16 @@ namespace VentasCarrito.Controllers
 
         [HttpPut]
         [Route("Eliminar/{pId}")]
-        public IActionResult Delete( int pId) 
+        public IActionResult Delete(int pId) 
         {
-            var ClienteEliminacion = new SrvCliente();
-            var EliminacionCliente = new MdlClienteEliminar();
+            var SrvClienteEliminacion = new SrvCliente();
+            var MdClienteEliminar = new MdlClienteEliminar();
             var Resp = new ApiRespuesta();
 
             try
             {
-                EliminacionCliente.Id_Cliente = pId;
-                ClienteEliminacion.Eliminar(EliminacionCliente);
+                MdClienteEliminar.Id_Cliente = pId;
+                SrvClienteEliminacion.Eliminar(MdClienteEliminar);
                 Resp.exitosa = true;
                 Resp.mensaje = "El registro ha sido eliminado";
                 return Ok(Resp);

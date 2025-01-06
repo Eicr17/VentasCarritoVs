@@ -15,7 +15,7 @@ namespace CarritosVentaLibrerira.Servicios
         {
 
             var lista = new List<MdlProducto>();
-            SqlConnection cn = new SqlConnection("Data Source= 192.168.1.97; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10;");
+            SqlConnection cn = new SqlConnection("Data Source= 192.168.1.98; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10;");
             cn.Open();
             SqlCommand cmd = new SqlCommand("Select * From Producto");
             cmd.Connection = cn;
@@ -47,7 +47,7 @@ namespace CarritosVentaLibrerira.Servicios
 
         public void Insertar(MdlCrearProducto item)
         {
-            var conn = new SqlConnection("Data Source=192.168.1.97; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10;");
+            var conn = new SqlConnection("Data Source=192.168.1.98; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10;");
             conn.Open();
 
             string sql = "Insert into Producto(Nombre_Producto,Marca,Precio,Existencia)  " +
@@ -70,7 +70,7 @@ namespace CarritosVentaLibrerira.Servicios
 
         public void Actualizar(MdlProductoActualizar Item)
         {
-            var conn = new SqlConnection("Data Source=192.168.1.97; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10;");
+            var conn = new SqlConnection("Data Source=192.168.1.98; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10;");
             conn.Open();
 
             string sql = "Update Producto set   Nombre_Producto=@nombre, Marca=@marca, Precio=@Precio, Existencia = @existencia " +
@@ -94,7 +94,7 @@ namespace CarritosVentaLibrerira.Servicios
 
         public void Eliminar(MdlProductoEliminar Item)
         {
-            var conn = new SqlConnection("Data Source=192.168.1.97; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10;");
+            var conn = new SqlConnection("Data Source=192.168.1.98; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10;");
             conn.Open();
             string sql = "Delete From Producto " +
                 "Where Id_Producto = @Id_Producto ";

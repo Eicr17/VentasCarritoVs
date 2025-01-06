@@ -58,16 +58,16 @@ namespace VentasCarrito.Controllers
         [Route("Crear")]
         public IActionResult Crear([FromBody] ProductoApi Item)
         {
-            var ProductoInsercion = new SrvProducto();
-            var InsercionProducto = new MdlCrearProducto();
+            var  SrvProductoCrear = new SrvProducto();
+            var MdProdCrear = new MdlCrearProducto();
 
             try
             {
-                InsercionProducto.Nombre_Producto = Item.nombre_producto;
-                InsercionProducto.Marca = Item.marca;
-                InsercionProducto.Precio = Item.precio;
-                InsercionProducto.Existencia = Item.Existencia;
-                ProductoInsercion.Insertar(InsercionProducto);
+                MdProdCrear.Nombre_Producto = Item.nombre_producto;
+                MdProdCrear.Marca = Item.marca;
+                MdProdCrear.Precio = Item.precio;
+                MdProdCrear.Existencia = Item.Existencia;
+                SrvProductoCrear.Insertar(MdProdCrear);
                 var resp = new MdlMensajeResp();
                 resp.mensaje_exitoso = "Insercion Exitosa";
                 return Ok(resp);
@@ -86,17 +86,17 @@ namespace VentasCarrito.Controllers
         [Route("Actualizar")]
         public IActionResult Actualizar([FromBody] ProductoApi Item) 
         {
-            var ProductoActualizacion = new SrvProducto();
-            var ActualizacionProducto = new MdlProductoActualizar();
+            var SrvProdActualizar = new SrvProducto();
+            var MdProdActualizar = new MdlProductoActualizar();
 
             try
             {
-                ActualizacionProducto.Id_Producto = Item.id_producto;
-                ActualizacionProducto.Nombre_Producto = Item.nombre_producto;
-                ActualizacionProducto.Marca = Item.marca;
-                ActualizacionProducto.Precio = Item.precio;
-                ActualizacionProducto.Existencia = Item.Existencia;
-                ProductoActualizacion.Actualizar(ActualizacionProducto);
+                MdProdActualizar.Id_Producto = Item.id_producto;
+                MdProdActualizar.Nombre_Producto = Item.nombre_producto;
+                MdProdActualizar.Marca = Item.marca;
+                MdProdActualizar.Precio = Item.precio;
+                MdProdActualizar.Existencia = Item.Existencia;
+                SrvProdActualizar.Actualizar(MdProdActualizar);
                 var resp = new MdlMensajeResp();
                 resp.mensaje_exitoso = "Actualizacion Exitosa";
                 return Ok(resp);
@@ -113,15 +113,15 @@ namespace VentasCarrito.Controllers
         [Route("Eliminar/{pId}")]
         public IActionResult Eliminar(int pId)
         {
-            var ProductoEliminacion = new SrvProducto();
-            var EliminacionProducto = new MdlProductoEliminar();
+            var SrvProdEliminar = new SrvProducto();
+            var MdProdEliminar = new MdlProductoEliminar();
             var Resp = new ApiRespuesta();
 
 
             try
             {
-                EliminacionProducto.Id_Producto = pId;
-                ProductoEliminacion.Eliminar(EliminacionProducto);
+                MdProdEliminar.Id_Producto = pId;
+                SrvProdEliminar.Eliminar(MdProdEliminar);
                 Resp.exitosa = true;
                 Resp.mensaje = "El registro ha sido eliminado";
                 return Ok(Resp);

@@ -18,7 +18,7 @@ namespace CarritosVentaLibrerira.Servicios
         {
             var lista = new List<MdlCliente>();
 
-            SqlConnection cn = new SqlConnection("Data Source=192.168.1.97; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10;");
+            SqlConnection cn = new SqlConnection("Data Source=192.168.1.98; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10;");
             cn.Open();
             SqlCommand cmd = new SqlCommand("Select * from Cliente");
             cmd.Connection = cn;
@@ -50,11 +50,11 @@ namespace CarritosVentaLibrerira.Servicios
         public void Insertar(MdlClienteCrear item)
         {
 
-            var conn = new SqlConnection("Data Source=192.168.1.97; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10;");
+            var conn = new SqlConnection("Data Source=192.168.1.98; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10;");
             conn.Open();
 
-            string sql = "INSERT INTO Cliente(nombre, apellido, dpi, telefono, totalventas) " +
-           "VALUES (@nombre, @apellido, @dpi, @telefono,)";
+            string sql = "INSERT INTO Cliente(nombre,apellido,dpi,telefono,totalventas) "+
+           "VALUES (@nombre,@apellido, @dpi, @telefono,@totalventas)";
 
 
             var cmd = new SqlCommand();
@@ -64,6 +64,8 @@ namespace CarritosVentaLibrerira.Servicios
             cmd.Parameters.Add("@apellido", SqlDbType.VarChar).Value = item.Apellido;
             cmd.Parameters.Add("@dpi", SqlDbType.VarChar).Value = item.Dpi;
             cmd.Parameters.Add("@telefono", SqlDbType.VarChar).Value = item.Telefono;
+            cmd.Parameters.Add("@totalventas", SqlDbType.VarChar).Value = item.TotalVentas;
+
             cmd.ExecuteNonQuery();
 
 
@@ -75,10 +77,9 @@ namespace CarritosVentaLibrerira.Servicios
         public void Actualizar(MdlClienteActualizar item) 
         
         {
-            var conn = new SqlConnection("Data Source=192.168.1.97; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10;");
+            var conn = new SqlConnection("Data Source=192.168.1.98; Initial Catalog=dbCarritoCompras; User=sa; Password=Admin10; " );
             conn.Open();
-
-            string sql = "Update Cliente set  Nombre=@Nombre, Apellido=@Apellido, Dpi=@Dpi, Telefono = @Telefono, TotalVentas=@Totalventas " +
+            string sql = "Update Cliente set  Nombre=@Nombre, Apellido=@Apellido, Dpi=@Dpi, Telefono = @Telefono " +
                 "Where Id_cliente=@Idcliente";
 
             var cmd = new SqlCommand();
@@ -98,7 +99,7 @@ namespace CarritosVentaLibrerira.Servicios
 
         public void Eliminar(MdlClienteEliminar item)
         {
-            var conn = new SqlConnection("Data Source=192.168.1.97; Initial Catalog=dbCarritoCompras; User=sa; Password= Admin10;");
+            var conn = new SqlConnection("Data Source=192.168.1.98; Initial Catalog=dbCarritoCompras; User=sa; Password= Admin10;");
             conn.Open();
 
             string sql = "DELETE FROM Cliente " +
